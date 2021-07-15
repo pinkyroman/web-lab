@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="ko-kR">
+    <head>
+        <meta charset="utf-8">
+        <title>DOM Manipulation Example</title>
+        <script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
+        <script src="scripts/dom-manipulation.js"></script>
+        <style>
+            ul {
+                width: 150px;
+            }
+        
+            /* .highlight {
+                border: 3px dotted red;
+                background-color: yellow;
+            } */
+
+             .highlight {
+                width: 150px;
+                border: 3px double green;
+                background-color: lightyellow;
+            }
+
+            .evenRow { background-color:lightyellow; }
+            .oddRow { background-color:lightgreen; }         
+            
+            .item_0 { background-color: lightyellow; }
+            .item_1 { background-color: lightblue; }
+            .item_2 { background-color: lightgray; }
+            .item_3 { background-color: lightgreen; }
+
+            .label {width: 200px; font-weight: bold; color: blue; }
+            .dataEntry { background-color: yellow; }
+
+            .newRecord { font-weight: bold; background-color: lightyellow; }
+        </style>
+    </head>
+
+    <body>
+        <strong>Departments:</strong>
+        <ul>
+            <li>Marketing</li>
+            <li>Sales</li>
+            <li>Technology</li>
+                <ul id="tech">
+                    <li class="newRecord">Hardware Technology</li>
+                    <li class="oldRecord">Software Technology</li>
+                </ul>
+            <li>Customer Support</li>
+        </ul>
+        <br><br>
+        <div id="lstDepartments" class="highlight">
+            - Marketing<br>
+            - Sales<br>
+            - Technology<br>
+            - Customer Support<br>
+        </div><br><br>
+        <p>
+            <div id="classAssociation">click 'hasClass()' button to see a result</div>
+        </p>
+        <p>
+            Gender: <input type="radio" name="gender" id="chkMale" checked>Male
+            <input type="radio" name="gender" id="chkFemale">Female <br>
+            <div class="billingAddress">
+                <div class="label">Name:</div><input type="text" id="txtName" class="dataEntry" value=""><br>
+                <div class="label">Address:</div><input type="text" id="txtAddress" class="dataEntry"><br><br><br>
+            </div>
+            <div id="message"></div>
+            Shipping Address same as Billing Address (clone()/remove() test): <input id="chkShippingAddress" type="checkbox"><br><br>
+            Shipping Address:
+            <div id="shippingAddress"></div>
+        </p>
+        <p>
+            <div class="item_0">
+                <p class="para">This is paragraph 1</p>
+            </div>
+            <div class="item_1">
+                <p class="para">This is paragraph 2</p>
+            </div>
+            <div class="item_2">
+                <p class="para">This is paragraph 3</p>
+            </div>
+            <div class="item_3">
+                <p class="para">This is paragraph 4</p>
+            </div>
+        </p>
+
+        <br><br>
+        <input id="ex01Button" type="button" value="addClass()">
+        <input id="ex01_1Button" type="button" value="addClass(function (index, className) { ... })">
+        <input id="ex02Button" type="button" value="hasClass()">
+        <input id="ex03Button" type="button" value="removeClass()">
+        <br><br>
+        <input id="ex04Button" type="button" value="toggleClass()">
+        <input id="ex05Button" type="button" value="toggleClass(function (index, className) { ... })">
+        <br><br>
+        <input id="ex06Button" type="button" value="css(properies)">
+        <input id="ex07Button" type="button" value='css("propertyname", function(index) { ... })'>
+        
+        <br><br>
+        <input id="ex08Button" type="button" value="attr()">
+        <input id="ex09Button" type="button" value="attr(attributes)">
+        <input id="ex10Button" type="button" value='attr("attribute", function(index) { ... })'>
+
+        <br><br>
+        <input id="ex11_0Button" type="button" value="val(): Get Value">
+        <input id="ex11_1Button" type="button" value="val(): Set Value">
+        <input id="ex12Button" type="button" value="val(function(index, currentValue) { ... })">
+
+        <br><br>
+        <input id="ex13Button" type="button" value="html(): get HTML">
+        <input id="ex14Button" type="button" value="html(htmlString): set HTML">
+        <input id="ex14_1Button" type="button" value="html(function (index, oldHTML) { ... }): set HTML">
+        <input id="ex15Button" type="button" value="text(): get combined text">        
+
+        <br><br>
+        <input id="ex16Button" type="button" value="append()">
+        <input id="ex17Button" type="button" value="prepend()">
+        <input id="ex18Button" type="button" value="wrap()">
+        <input id="ex19Button" type="button" value="wrapInner()">
+        <input id="ex20Button" type="button" value="wrapAll()">
+        <input id="ex21Button" type="button" value="after()">
+        <input id="ex23Button" type="button" value="remove()">
+        <input id="ex24Button" type="button" value="unwrap()">
+
+        <br><br>
+        <input id="ex25Button" type="button" value="replaceWith()">
+
+    </body>    
+</html>

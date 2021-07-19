@@ -1,0 +1,40 @@
+<html>
+    <head>
+        <title>Vue Directives</title>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.3.4/vue.js"></script>
+        <style>
+            textarea {
+                width: 320px;
+                height: 240px;
+            }
+        </style>
+    </head>
+
+    <body>
+        <div id="app">
+            <template v-if="!message">
+                <h1>You must send a message for help!</h1>
+                <p>Dispatch a messenger immediately!</p>
+                <p>To nearby kingdom of Hearts!</p>                
+            </template>
+            <template v-else>
+                <h2>You have sent a message!</h2>
+            </template>
+            <textarea v-model="message"></textarea><br><br>
+            <button v-if="message">Send word to allies for help!</button>
+            <p>
+                <code>
+                    {{$data}}
+                </code>
+            </p>
+        </div>
+    </body>
+    <script>
+        new Vue({
+            el: '#app',
+            data: {
+                message: 'Our king is dead!'
+            }
+        })
+    </script>
+</html>

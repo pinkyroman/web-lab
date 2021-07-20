@@ -1,0 +1,58 @@
+<html>
+    <head>
+        <title>Rendering lists</title>
+        <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.3.4/vue.js"></script>
+    </head>
+    <body>
+        <div class="container">
+            <h1>The multiplication table of 4</h1>
+            <ul class="list-group">
+                <li v-for="i in 11" class="list-group-item">
+                    {{i - 1}} times 4 equals {{(i - 1) * 4}}
+                </li>
+            </ul>
+            <h1>Let's hear some stories!</h1>
+            <ul class="list-group">
+                <li v-for="(story, index) in stories" class="list-group-item">
+                    {{index}}: {{story.writer}} said "{{story.plot}}"
+                </li>
+            </ul>
+            <h1>Using v-for for objects</h1>
+            <ul class="list-group">
+                <li v-for="(value, key, index) in story" class="list-group-item">
+                    {{index}} : {{key}} : {{value}}
+                </li>
+            </ul>
+            <pre>
+                {{$data}}
+            </pre>
+        </div>
+    </body>
+    <script>
+        new Vue({
+            el: ".container",
+            data: {
+                stories: [
+                    {
+                        plot: "I crashed my car today!",
+                        writer: "Alex"
+                    },
+                    {
+                        plot: "Yesterday, someone store my bag!",
+                        writer: "John"
+                    },
+                    {
+                        plot: "Someone ate my chocolate ...",
+                        writer: "Alex"
+                    }
+                ],
+                story: {
+                    plot: "How to treat objects in v-for",
+                    writer: "John",
+                    upvotes: 47
+                }             
+            }
+        })
+    </script>
+</html>

@@ -1,0 +1,69 @@
+<html>
+    <head>
+        <title>Vue Event Handling Exercise</title>
+        <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.3.4/vue.js"></script>
+    </head>
+
+    <body>
+        <div class="container">
+            <h1>People of Vue</h1>
+            <ul class="list-group">
+                <li class="list-group-item" v-for="candidate in candidates">
+                    {{candidate.name}} {{candidate.votes}} <button @click="candidate.votes++" class="bt">Vote</button>
+                </li>
+            </ul>
+            Press 'Delete' to reset:
+            <button @click="reset">Delete</button>
+            <br>
+            <h1>Our mayor is <span>{{voteResult}}</span>!</h1>
+
+            <!-- display data for debugging -->
+            <pre>
+                <code>
+                    {{$data}}
+                </code>
+            </pre>
+        </div>
+    </body>
+    <script>
+        new Vue({
+            el: ".container",
+            data: {
+                candidates: [
+                    {
+                        name: "Mr. Black",
+                        votes: 0,
+                    },
+                    {
+                        name: "Mr. Pink",
+                        votes: 0,
+                    },
+                    {
+                        name: "Mr. White",
+                        votes: 0,
+                    },
+                    {
+                        name: "Mr. Brown",
+                        votes: 0,
+                    }
+                ]
+            },
+            computed: {
+                voteResult: function () {
+                    this.candidates.sort((c1, c2) => {                       
+                        return c2.votes - c1.votes;
+                    })
+                }
+            },
+            methods: {
+                reset: function () {
+                    this.candidates = this.candidates.map((candidate) => {
+                        candidate.votes = 0;
+                        return candidate;
+                    })
+                }
+            }
+        })
+    </script>
+</html>

@@ -11,7 +11,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 }
 
 function process_form($input) {
-    print $input["age"]. "살이신 ". $input["name"]. "님 안녕하세요!";
+    // print $input["age"]. "살이신 ". $input["name"]. "님 안녕하세요!";
+    print $input["age"] . "살이신 " . htmlentities($input["name"]) . "님 안녕하세요!";
 }
 
 function show_form($errors) {

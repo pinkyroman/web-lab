@@ -17,7 +17,9 @@
 <script>
     export default {
         mounted() {
-            console.log('Component mounted.')
-        }
+            let x = [1, 2, 3];
+            let y = _.concat(x, [4, 5]);
+            console.log('Component mounted: ' + y);
+        },
     }
 </script>

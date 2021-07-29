@@ -12,5 +12,7 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('my_welcome');
 });
+
+Route::get("/hello/{name?}", "MyController@sayHello");

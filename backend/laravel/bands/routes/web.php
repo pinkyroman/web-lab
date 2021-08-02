@@ -12,5 +12,9 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
-});
+    return view('home');
+})->name('home');
+
+Route::get('/bands', function () {
+    return view('bands');
+})->name('bands');

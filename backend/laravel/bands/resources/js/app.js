@@ -19,6 +19,12 @@ window.Vue = require('vue');
 
 // const files = require.context('./', true, /\.vue$/i)
 // files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default))
+const files = require.context('./', true, /\.vue$/i)
+files.keys().map(function (key) {
+    let componentName = _.kebabCase(key.split('/').pop().split('.')[0].replace('Component', ''));
+    Vue.component(componentName, files(key).default);
+    console.log(`'${key}' has been registerd with a name: ${componentName}`);
+});
 
 Vue.component('example-component', require('./components/ExampleComponent.vue').default);
 

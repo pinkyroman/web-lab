@@ -28,8 +28,8 @@ export default {
                     href: "/blade-form",
                 },
                 {
-                    title: "CURD Form",
-                    href: "/curd-form"
+                    title: "Rock 'n' Rool and Heavy Metal Bands",
+                    href: "/bands"
                 }
             ]
         }

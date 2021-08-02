@@ -23,7 +23,14 @@ Route::get('/blade-form', function() {
     return view('blade-form');
 });
 
-Route::get('/curd-form', function() {
-    return "UNDER CONSTRUCTION";
-    // return view('curd-form');
+Route::get('/bands', function() {
+    return view('bands.home');
 });
+
+Route::get("/bands/manage", function() {
+    return view('bands.management');
+})->name('band-management');
+
+Route::get("/bands/search", function () {
+    return view('bands.search');
+})->name('band-search');

@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Using Form')
+@section('title', 'Vue Form')
 
 @section('content')
     <albums-form debug></albums-form>

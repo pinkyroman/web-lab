@@ -22,9 +22,9 @@
             background-color: #a3abaf;
         }
 
-        #app {
+        /* #app {
             height: 600px;
-        }
+        } */
     </style>
 
     @stack('head')
@@ -35,6 +35,17 @@
     <div class="jumbotron header">
         <h1 style="color:black">Lavue</h1>
         <p>Example codes for studying Laravel and Vue</p>
+        <div class="card">
+            <div class="card-body" style="text-align:center; padding:8px;">
+                <b>
+                    @if(url()->current() == route('home'))
+                    Select a content to enjoy!
+                    @else
+                    You're in '@yield('title')' and you can move to <a href="/">Home</a> anytime you want!
+                    @endif
+                </b>
+            </div>
+        </div>
     </div>
     @show
 
@@ -44,17 +55,7 @@
     </div>
 
     @section("footer")
-    <div class="panel panel-default footer">
-        <div class="panel-body" style="text-align:center; padding:8px;">
-            <b>
-                @if(url()->current() == route('home'))
-                    Select a content to enjoy!
-                @else
-                    Return to <a href="/">Contents</a>
-                @endif
-            </b>
-        </div>
-    </div>
+    <br>
     @show
 </body>
 

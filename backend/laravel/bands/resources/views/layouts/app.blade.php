@@ -10,7 +10,7 @@
     <!-- Fonts -->
     <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
     <link rel="stylesheet" href="{{ asset('css/app.css') }}">
-    <style>
+    <!-- <style>
         * {
             font-family: 'Nunito', sans-serif;
             font-weight: 200;
@@ -19,7 +19,7 @@
         .main {
             padding: 16px;
         }
-    </style>
+    </style> -->
 
     @stack('head')
 </head>
@@ -27,12 +27,14 @@
 <body>
     <div class="container main">
         <div class="col d-flex justify-content-center">
-            <div class="card" style="width: 40rem;">
+            <div class="card" style="width: 50rem;">
                 <img src="@yield('banner-image')" class="card-img-top" alt="Long live R&R">
                 <div class="card-body">
                     <h5 class="card-title">@yield('menu-title')</h5>
                     <p class="card-text">@yield('menu-description')</p>
                 </div>
+
+
                 <div class="card-body">
                     <div id="app">
                         @stack('content')

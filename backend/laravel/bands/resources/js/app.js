@@ -7,6 +7,8 @@
 
 require('./bootstrap');
 
+window._ = require('lodash');
+
 window.Vue = require('vue');
 
 /**
@@ -25,8 +27,6 @@ files.keys().map(function (key) {
     Vue.component(componentName, files(key).default);
     console.log(`'${key}' has been registerd with a name: ${componentName}`);
 });
-
-Vue.component('example-component', require('./components/ExampleComponent.vue').default);
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to

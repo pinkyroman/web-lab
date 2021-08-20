@@ -7,9 +7,9 @@
 <!-- 메뉴 아이템 및 링크 정의 -->
 @php
 $menuItems = [
-    "Manage Bands" => route('bands'),
-    "Manage Albums" => "#",
-    "Manage Songs" => "$",
+"Manage Bands" => route('bands'),
+"Manage Albums" => "#",
+"Manage Songs" => "$",
 ];
 @endphp
 
@@ -19,4 +19,25 @@ $menuItems = [
     <li class="list-group-item"><a href="{{$href}}" class="card-link">{{$menu}}</a></li>
     @endforeach
 </ul>
+@endpush
+
+@push('script')
+<script>
+
+let arr = [1, 2, 3, 4, 5];
+
+function logArray(a) {
+    _.each(arr, (index, el) => {
+        if (index == 3) {
+            return false;
+        }
+        console.log(`Element: ${el}`);
+    });
+    return "\nDONE";
+}
+
+console.log(logArray(arr));
+
+</script>
+
 @endpush

@@ -1,0 +1,73 @@
+<html>
+    <head>
+        <title>Planet Tuor</title>
+        <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
+        <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.3.4/vue.js"></script>
+    </head>
+
+    <body>
+        <div class="container">
+            <h1>Where would you like to go?</h1>
+            <ul class="list-group">
+                <planet v-for="(planet, index) in planets" :key="index" :value="planet"></planet>
+            </ul>            
+
+            <!-- display data for debugging -->
+            <pre>
+                <code>
+                    {{$data}}
+                </code>
+            </pre>
+        </div>
+    </body>
+    
+    <template id="planet-template">
+        <li class="list-group-item">
+            Planet: {{value.name}} Visited {{value.visits}} time(s).
+            <button v-show="canVisit" @click="visit" class="btn btn-default">Visit</button>
+            <span v-show="value.visits > 0" class="fa fa-rocket fa-2x pull-right" aria-hidden="true"></span>
+        </li>
+    </template>
+    
+    <script>
+        Vue.component("planet", {
+            template: "#planet-template",
+            props: ["value"],
+            methods: {
+                visit: function () {
+                    this.value.visits++;
+                }
+            },
+            computed: {
+                canVisit: function () {
+                    return this.value.visits < 3;
+                }
+            }
+        });
+
+        new Vue({
+            el: ".container",
+            data: {
+                planets: [
+                    {
+                        name: "Mercury",
+                        visits: 0,
+                    },
+                    {
+                        name: "Venus",
+                        visits: 0,
+                    },
+                    {
+                        name: "Mars",
+                        visits: 0,
+                    },
+                    {
+                        name: "Jupiter",
+                        visits: 0,
+                    },
+                ]
+            }
+        })
+    </script>
+</html>

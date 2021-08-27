@@ -1,0 +1,38 @@
+<html>
+    <head>
+        <title>Using Vue Directives</title>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.3.4/vue.js"></script>
+    </head>
+
+    <body>
+        <div id="app">
+            <div v-if="gender == 'male' || gender == 'female'">
+                <h1>Hello,
+                    <span v-if="gender == 'male'">Mr </span>
+                    <span v-else>Miss </span>
+                    {{name}}.
+                </h1>
+            </div>
+            <div v-else><h1>So, you can't decide. Fine!</h1></div>
+            <label for="gender">Enter your gender:</label>
+            <input name="gender" type="text" v-model="gender"><br><br>
+            <label for="name">Enter your name:</label>
+            <input name="name" type="text" v-model="name">        
+            <br><br>
+            <p>
+                <code>
+                    {{$data}}
+                </code>
+            </p>    
+        </div>        
+    </body>
+    <script>
+        new Vue({
+            el: '#app',
+            data: {
+                gender: 'female',
+                name: 'Universe'
+            }
+        })
+    </script>
+</html>

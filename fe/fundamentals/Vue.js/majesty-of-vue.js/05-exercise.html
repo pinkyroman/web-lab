@@ -1,0 +1,52 @@
+<html>
+    <head>
+        <title>Filtering Exercise</title>
+        <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.3.4/vue.js"></script>
+    </head>
+
+    <body>
+        <div class="container">
+            <h1>People of Gaul</h1>
+            <ul class="list-group">
+                <li v-for="person in people" class="list-group-item">
+                    {{person.name}} {{person.age}}
+                </li>
+            </ul>
+            <h1>"Old" People of Gaul</h1>
+            <ul class="list-group">
+                <li v-for="person in oldPeople" class="list-group-item">
+                    {{person.name}} {{person.age}}
+                </li>
+            </ul>
+        
+
+            <!-- display data for debugging -->
+            <pre>
+                <code>
+                    {{$data}}
+                </code>
+            </pre>
+        </div>
+    </body>
+    <script>
+        new Vue({
+            el: ".container",
+            data: {
+                people: [
+                    { name: "Ozzy Osbourne", age: 73 },
+                    { name: "Julius Caesar", age: 56 },
+                    { name: "Motor Head", age: 32 },
+                    { name: "Judas Priest", age: 62 },
+                ],
+            },
+            computed: {
+                oldPeople: function () {
+                    return this.people.filter((p) => {
+                        return p.age >= 65;
+                    });
+                }
+            }
+        })
+    </script>
+</html>

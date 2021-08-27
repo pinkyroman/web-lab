@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Window Object</title>
+        <style>
+            div#button {
+                border: 2px solid blue;
+                margin: 8px;
+                width: 64px;
+                height: 48px;                
+            }
+            #info {
+                border: 1px dotted red;
+            }
+        </style>
+        <script>
+            window.onload = function() {
+                var b = document.getElementById('button');
+                var win = null;
+                b.onclick = function() {
+                    if (win == null) {
+                        win = window.open('https://google.co.kr', '구글링', 'width=800, height=600, location=no, scrollbars=yes, menubar=no, toolbar=no, resizable=yes');
+                    } else {
+                        win.close();
+                        win = null;
+                    }
+                }
+
+                var colors = ["white", "blue"];
+                var colorIndex = 0;
+                var timerId = window.setInterval(function() {
+                    b.style.background = colors[colorIndex++ % 2];
+                    if  (colorIndex > 10)
+                    {
+                        clearInterval(timerId);
+                        timerId = null;
+                    }
+                }, 1000);
+
+                var info = document.getElementById('info');
+                if (info == null) {
+                    alert('info not found');
+                }
+                info.innerText = navigator.appCodeName + '\r\n' +
+                     navigator.appName + '\r\n' +
+                     navigator.appVersion + '\r\n' +
+                     navigator.platform + '\r\n' +
+                     navigator.userAgent;
+            };
+
+            window.onclose = function() {
+                if (timerId != null) {
+                    clearInterval(timerId);
+                }
+            };
+        </script>
+    </head>
+    <body>
+        <div id="button">Open or Close</div>
+        <p id="info"></p>
+    </body>
+</html>

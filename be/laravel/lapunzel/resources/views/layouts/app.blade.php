@@ -27,4 +27,6 @@
     @yield('contents')
 </body>
 
+@stack('scripts')
+
 </html>

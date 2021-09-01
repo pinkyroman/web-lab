@@ -15,7 +15,7 @@
     ]
 ])
 
-<x-alart>
+<x-alert>
     My First Component.
-</x-alart>
+</x-alert>
 @endsection

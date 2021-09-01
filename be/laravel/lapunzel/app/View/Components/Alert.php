@@ -23,6 +23,6 @@ class Alart extends Component
      */
     public function render()
     {
-        return view('components.alart');
+        return view('components.alert');
     }
 }

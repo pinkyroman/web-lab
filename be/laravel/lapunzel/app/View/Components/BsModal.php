@@ -4,7 +4,7 @@ namespace App\View\Components;
 
 use Illuminate\View\Component;
 
-class Modal extends Component
+class BsModal extends Component
 {
     public $title;
 
@@ -25,6 +25,6 @@ class Modal extends Component
      */
     public function render()
     {
-        return view('components.modal');
+        return view('components.bsModal');
     }
 }

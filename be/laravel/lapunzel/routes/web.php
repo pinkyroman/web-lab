@@ -16,7 +16,3 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('home');
 })->name('home');
-
-Route::get('blade-template', function () {
-    return view('blade-template.home');
-})->name('blade-template.home');

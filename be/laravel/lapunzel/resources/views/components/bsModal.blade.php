@@ -16,7 +16,10 @@
 
             <div class="modal-footer">
                 {{$buttons}}
+
+                @if($showCloseButton)
                 <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                @endif
             </div>
         </div>
     </div>

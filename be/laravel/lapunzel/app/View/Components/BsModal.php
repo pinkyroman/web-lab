@@ -7,15 +7,17 @@ use Illuminate\View\Component;
 class BsModal extends Component
 {
     public $title;
+    public $showCloseButton;
 
     /**
      * Create a new component instance.
      *
      * @return void
      */
-    public function __construct($title)
+    public function __construct($title, $hideCloseButton = false)
     {
         $this->title = $title;
+        $this->showCloseButton = !$hideCloseButton;
     }
 
     /**

@@ -25,6 +25,7 @@ class AppServiceProvider extends ServiceProvider
     public function boot()
     {
         // custom blade directive example
+        // 제대로 쓰려면, Template 지정할 수 있도록 해야 할 것.
         Blade::directive('showBsModal', function ($expression) {
             return "<?php echo sprintf('<button type=\"button\" class=\"btn btn-%s\" data-toggle=\"modal\" data-target=\"#%s\">%s</button>',
                     {$expression}['class'],

@@ -16,3 +16,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('home');
 })->name('home');
+
+Route::get('/modal-example', function () {
+    return view('modal-example');
+})->name('modal-example');

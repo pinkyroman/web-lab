@@ -3,12 +3,16 @@
 
 > 참고 자료는 Laravel 8 이전 버전을 기준으로 되어 있으며, 이 문서는 8 버전을 기준으로 진행한다.
 <hr/>
+<br>
+
 
 ## 프로젝트 생성
 ```
 $ laravel new laravel-vue-axios
 ```
 <hr/>
+<br>
+
 
 ## Bootstarp 설치
 ```
@@ -16,6 +20,7 @@ $ composer require laravel/ui
 $ php artisan ui bootstarp
 ```
 <hr/>
+<br>
 
 ## Vue 및 Vuex 패키지 설치
 ```
@@ -25,14 +30,17 @@ $ npm install && npm run dev
 $ npm run dev (한 번 더)
 ```
 <hr/>
+<br>
 
 ## PHP 개발 서버 실행
 ```
 $ php artisan serve
 ```
 <hr/>
+<br>
 
 ## 데이터베이스 셋업
+<br>
 
 ### 데이터베이스 생성 (MySQL 기준)
 - laravel-vue-axios 라는 이름의 DB를 생성한다.
@@ -50,12 +58,34 @@ DB_PASSWORD=root.123
 
 ...
 ```
+<br>
 
 ### 모델 생성
 ```
 $ php artisan make:model Post -mc
 ```
 > -mc 플래그는 마이그레이션 파일 및 PostController 라는 이름의 컨트롤러까지 생성하라는 의미.
+
+생성된 모델 파일(```app/Models/Post.php```)에 다음과 같이 ```fillable``` 멤버 변수를 추가해 주도록 한다:
+```
+// app/Models/Post.php
+
+<?php
+
+namespace App\Models;
+
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
+
+class Post extends Model
+{
+    use HasFactory;
+
+    protected $fillable = ['title', 'content'];
+
+}
+```
+<br>
 
 ### 마이그레이션 파일 수정
 ``` 
@@ -95,12 +125,14 @@ class CreatePostsTable extends Migration
     }
 }
 ```
+<br>
 
 ### 마이그레이션 수행 (posts 테이블 생성)
 ```
 $ php artisan migrate
 ```
 커맨드 실행 후, DB에 테이블이 제대로 생성되었는지 확인한다.
+<br>
 
 ### 샘플 데이터 추가하기 (Seeding)
 ```
@@ -134,6 +166,7 @@ $ php artisan make:factory PostFactory --model=Post
 $ php artisan db:seed
 ```
 <hr/>
+<br>
 
 ## 라우트 및 컨트롤러 기능 구현
 ```
@@ -184,10 +217,20 @@ class PostController extends Controller
 
 ```
 <hr/>
+<br>
 
 ## Vuex 를 이용한 상태(state) 관리
+Vuex는 앱의 상태를 중앙 집중식으로 관리할 수 있도록 해 준다. [공식 정의](https://vuex.vuejs.org/)에 따르면, Vuex는:
+> Vue.js 어플리케이션을 위한 상태 관리 패턴 + 라이브러리. 이는 상태가 예측 가능한 방식으로만 변경될 수 있도록 하는 규칙과 함께 어플리케이션의 모든 컴포넌트에 대한 중앙 집중식 저장소 역할을 한다.
+<br>
+
+즉, 모든 컴포넌트 간에 공유할 수 있는 데이터의 유일한 소스(중앙 집중식)가 있으며, 데이터에 대한 모든 변경 사항은 앱의 모든 단일 구성요소를 통해 잘 감독되고 반영된다.
+
+<img src="https://vuex.vuejs.org/vuex.png" width="640px" height="480px" title="Vuex" alt="Vuex"></img><br/>
+<br>
 
 ### 상태(state) 생성
+Vuex 상태는 모든 어플리케이션 데이터를 담고 있는 단일 객체다. 
 ```
 // resources/js/store/state.js
 
@@ -197,8 +240,11 @@ let state = {
 
 export default state;
 ```
+<br>
 
 ### getters 정의
+```getters```는 데이터 저장소의 계산된 속성(computed property) 같은 것이다. ```getters```의 도움으로, 데이터 저장소 상태를 기반으로 파생된 것을 계산할 수 있다.
+
 ```
 // resources/js/store/getters.js
 
@@ -210,8 +256,12 @@ let getters = {
 
 export default getters;
 ```
+<br>
 
 ### mutations 정의
+공식 문서의 설명에 따르면, ```mutations```를 통해 데이터 일부에 변경을 수행할 수 있다. 다음은 공식 문서의 내용이다:
+> Vuex 저장소에서 실제로 상태를 변경하는 유일한 방법은 ```mutations```를 커밋(commit)하는 것이다. Vuex ```mutations```는 이벤트와 매우 유사하다. 각 ```mutation```은 문자열 타입과 핸들러를 가지고 있다. 핸들러 함수는 실제 상태 수정을 수행하는 곳이며, 상태를 첫 번째 인수로 받는다.
+
 ```
 // resources/js/store/mutations.js
 
@@ -230,8 +280,17 @@ let mutations = {
 
 export default mutations;
 ```
+위의 코드에 정의된 ```mutations``` 객체는 세 개의 함수를 가지고 있고, 각 함수는 상태 객체(state)를 첫 번째 인자로 받는다.
+
+<br>
 
 ### actions 정의
+```actions```는 ```mutations```와 비슷하지만, 다음에 있어 차이점을 갖는다:
+* 상태를 변경하는 대신, ```actions```는 ```mutations`를 커밋(commit)한다.
+* ```actions```는 임의의 비동기 작업을 포함할 수 있다.
+
+API를 사용한 중앙 집중식 데이터 관리 구현에 있어 가장 중요한 부분이다. Vuex ```actions```를 사용하면 우리의 데이터에 대해 비동기 작업을 수행할 수 있으며, 이때 Axios를 사용하게 된다. 즉, Axios 를 이용하여 비동기 API 호출을 처리할 수 있다는 것이다. 
+
 ```
 // resources/js/store/actions.js
 
@@ -253,7 +312,7 @@ let actions = {
             });
     },
     deletePost({commit}, post) {
-        axios.delete('/api/posts/${post.id}')
+        axios.delete(`/api/posts/${post.id}`)
             .then(res => {
                 if (res.data === 'ok') {
                     commit('DELETE_POST', post);
@@ -266,6 +325,7 @@ let actions = {
 
 export default actions;
 ```
+<br>
 
 ### Vue에 저장소 셋업
 ```
@@ -287,6 +347,7 @@ export default new Vuex.Store({
     actions
 });
 ```
+<br>
 
 ### Vue 인스턴스에 저장소 추가하기
 ```
@@ -333,8 +394,10 @@ const app = new Vue({
 });
 ```
 <hr/>
+<br>
 
 ## Vue 컴포넌트 만들기
+<br>
 
 ### Posts.vue 컴포넌트 만들기
 ```
@@ -387,6 +450,7 @@ export default {
 
 <style scoped></style>
 ```
+<br>
 
 ### CreatePost.vue 컴포넌트 만들기
 ```
@@ -440,8 +504,10 @@ export default {
 </style>
 ```
 <hr/>
+<br>
 
 ## 어플리케이션 마무리 하기
+<br>
 
 ### posts.blade.php 만들기
 ```

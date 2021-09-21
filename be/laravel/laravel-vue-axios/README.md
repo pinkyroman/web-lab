@@ -332,4 +332,111 @@ const app = new Vue({
     store
 });
 ```
+<hr/>
 
+## Vue 컴포넌트 만들기
+
+### Posts.vue 컴포넌트 만들기
+```
+// resources/js/components/Posts.vue
+
+<template>
+  <div>
+    <h4 class="text-center font-weight-bold">Posts</h4>
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th scope="col">Title</th>
+          <th scope="col">Content</th>
+          <th scope="col">Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr v-for="post in posts" :key="post.id">
+          <td>{{ post.title }}</td>
+          <td>{{ post.content }}</td>
+          <td>
+            <button class="btn btn-danger" @click="deletePost(post)">
+              <i style="color:white" class="fa fa-trash"></i>
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</template>
+
+<script>
+import { mapGetters } from "vuex";
+
+export default {
+  name: "Posts",
+  mounted() {
+    this.$store.dispatch("fetchPosts");
+  },
+  methods: {
+    deletePost(post) {
+      this.$store.dispatch("deletePost", post);
+    },
+  },
+  computed: {
+    ...mapGetters(["posts"]),
+  },
+};
+</script>
+
+<style scoped></style>
+```
+
+### CreatePost.vue 컴포넌트 만들기
+```
+// resources/js/components/CreatePost.vue
+
+<template>
+    <form action="" @submit="createPost(post)">
+        <h4 class="text-center font-weight-bold">Post creation form</h4>
+        <div class="form-group">
+            <input type="text" placeholder="Post title" v-model="post.title" class="form-control">
+
+        </div>
+        <div class="form-group">
+            <textarea v-model="post.content" placeholder="Post content" class="form-control">
+
+            </textarea>
+        </div>
+        <div class="form-group">
+            <button :disabled="!isValid" class="btn btn-block btn-primary" @click.prevent="createPost(post)">Submit
+            </button>
+        </div>
+    </form>
+</template>
+
+<script>
+    export default {
+        name: "CreatePost",
+        data() {
+            return {
+                post: {
+                    title: '',
+                    content: ''
+                }
+            }
+        },
+        methods: {
+            createPost(post) {
+                this.$store.dispatch('createPost', post)
+            }
+        },
+        computed: {
+            isValid() {
+                return this.post.title !== '' && this.post.content !== ''
+            }
+        }
+    }
+</script>
+
+<style scoped>
+
+</style>
+```
+<hr/>

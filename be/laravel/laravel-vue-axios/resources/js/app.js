@@ -23,8 +23,8 @@ window.Vue = require('vue').default;
 
 import store from './store/index';
 
-Vue.component('posts', require('./components/Posts.vue'))
-Vue.component('createPost', require('./components/CreatePost.vue'))
+Vue.component('posts', require('./components/Posts.vue').default)
+Vue.component('createPost', require('./components/CreatePost.vue').default);
 
 
 /**

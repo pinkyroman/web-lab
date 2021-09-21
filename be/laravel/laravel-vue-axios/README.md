@@ -2,17 +2,20 @@
 참고 자료: [Handle HTTP requests in a Laravel Vue.js app with Axios](https://pusher.com/tutorials/laravel-vue-axios/)
 
 > 참고 자료는 Laravel 8 이전 버전을 기준으로 되어 있으며, 이 문서는 8 버전을 기준으로 진행한다.
+<hr/>
 
 ## 프로젝트 생성
 ```
 $ laravel new laravel-vue-axios
 ```
+<hr/>
 
 ## Bootstarp 설치
 ```
 $ composer require laravel/ui
 $ php artisan ui bootstarp
 ```
+<hr/>
 
 ## Vue 및 Vuex 패키지 설치
 ```
@@ -21,11 +24,13 @@ $ npm install vuex --save
 $ npm install && npm run dev
 $ npm run dev (한 번 더)
 ```
+<hr/>
 
 ## PHP 개발 서버 실행
 ```
 $ php artisan serve
 ```
+<hr/>
 
 ## 데이터베이스 셋업
 
@@ -128,3 +133,54 @@ $ php artisan make:factory PostFactory --model=Post
 ```
 $ php artisan db:seed
 ```
+<hr/>
+
+## 라우트 및 컨트롤러 기능 구현
+```
+// routes/web.php
+
+Route::get('/', [PostController::class, 'index']);
+```
+```
+// routes/api.php
+
+Route::post('posts', [PostController::class, 'store']);
+Route::get('posts', [PostController::class, 'get']);
+Route::delete('posts/{id}', [PostController::class, 'delete']);
+```
+```
+// app/Http/Controllers/PostController.php
+
+<?php
+
+namespace App\Http\Controllers;
+
+use Illuminate\Http\Request;
+use App\Models\Post;
+
+class PostController extends Controller
+{
+    public function index() {
+        return view('posts');
+    }
+
+    public function get(Request $request) {
+        $posts = Post::orderBy('created_at', 'desc')->get();
+        return response()->json($posts);
+    }
+
+    public function store(Request $request) {
+        $post = Post::create($request->all());
+
+        return response()->json($post);
+    }
+
+    public function delete($id) {
+        Post::destroy($id);
+
+        return response()->json("ok");
+    }
+}
+
+```
+<hr/>

@@ -16,7 +16,7 @@ let actions = {
             });
     },
     deletePost({commit}, post) {
-        axios.delete('/api/posts/${post.id}')
+        axios.delete(`/api/posts/${post.id}`)
             .then(res => {
                 if (res.data === 'ok') {
                     commit('DELETE_POST', post);

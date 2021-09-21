@@ -39,8 +39,8 @@
     'class' => 'danger',
     'content' => 'Open Modal'
 ])
-@endsection
 
+@push('scripts')
 <script>
 window.addEventListener('DOMContentLoaded', function() {
     console.log('document loaded.');
@@ -57,4 +57,11 @@ window.addEventListener('DOMContentLoaded', function() {
     // modal() 함수를 사용할 수 있는 것은 Bootstrap이 jQuery에 plug-in 했기 때문.
     $('#exampleModal').modal('show');
 });
+
+const app = new Vue({
+    el: '#app',
+});
 </script>
+@endpush
+
+@endsection

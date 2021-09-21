@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ApiServiceExampleController;
 
 /*
 |--------------------------------------------------------------------------
@@ -20,3 +21,6 @@ Route::get('/', function () {
 Route::get('/modal-example', function () {
     return view('modal-example');
 })->name('modal-example');
+
+Route::get('/api-service-example', [ApiServiceExampleController::class,'index'])
+    ->name('api-service-example');

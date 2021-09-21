@@ -10,6 +10,10 @@
             'name' => 'Modal Example',
             'routeName' => 'modal-example'
         ],
+        [
+            'name' => 'API Service Example',
+            'routeName' => 'api-service-example'
+        ]
     ]
 ])
 @endsection

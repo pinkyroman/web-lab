@@ -184,3 +184,152 @@ class PostController extends Controller
 
 ```
 <hr/>
+
+## Vuex 를 이용한 상태(state) 관리
+
+### 상태(state) 생성
+```
+// resources/js/store/state.js
+
+let state = {
+    posts: []
+}
+
+export default state;
+```
+
+### getters 정의
+```
+// resources/js/store/getters.js
+
+let getters = {
+    posts: state => {
+        return state.posts;
+    }
+};
+
+export default getters;
+```
+
+### mutations 정의
+```
+// resources/js/store/mutations.js
+
+let mutations = {
+    CREATE_POST(state, post) {
+        state.posts.unshift(post);
+    },
+    FETCH_POSTS(state, posts) {
+        return state.posts = posts;
+    },
+    DELETE_POST(state, post) {
+        let index = state.posts.findIndex(item => item.id === post.id);
+        state.posts.splice(index, 1);
+    }
+}
+
+export default mutations;
+```
+
+### actions 정의
+```
+// resources/js/store/actions.js
+
+let actions = {
+    createPost({commit}, post) {
+        axios.post('/api/posts', post)
+            .then(res => {
+                commit('CREATE_POST', res.data);
+            }).catch(err => {
+                console.log(err);
+            });
+    },
+    fetchPosts({commit}) {
+        axios.get('/api/posts')
+            .then(res => {
+                commit('FETCH_POSTS', res.data);
+            }).catch(err => {
+                console.log(err);
+            });
+    },
+    deletePost({commit}, post) {
+        axios.delete('/api/posts/${post.id}')
+            .then(res => {
+                if (res.data === 'ok') {
+                    commit('DELETE_POST', post);
+                }
+            }).catch(err => {
+                console.log(err);
+            });
+    }
+}
+
+export default actions;
+```
+
+### Vue에 저장소 셋업
+```
+// resources/js/store/index.js
+
+import Vue from 'vue';
+import Vuex from 'vuex';
+import actions from './actions';
+import mutations from './mutations';
+import getters from './getters';
+import state from './state';
+
+Vue.use(Vuex);
+
+export default new Vuex.Store({
+    state,
+    mutations,
+    getters,
+    actions
+});
+```
+
+### Vue 인스턴스에 저장소 추가하기
+```
+// resources/js/app.js
+
+/**
+ * First we will load all of this project's JavaScript dependencies which
+ * includes Vue and other libraries. It is a great starting point when
+ * building robust, powerful web applications using Vue and Laravel.
+ */
+
+require('./bootstrap');
+
+window.Vue = require('vue').default;
+
+/**
+ * The following block of code may be used to automatically register your
+ * Vue components. It will recursively scan this directory for the Vue
+ * components and automatically register them with their "basename".
+ *
+ * Eg. ./components/ExampleComponent.vue -> <example-component></example-component>
+ */
+
+// const files = require.context('./', true, /\.vue$/i)
+// files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default))
+
+// Vue.component('example-component', require('./components/ExampleComponent.vue').default);
+
+import store from './store/index';
+
+Vue.component('posts', require('./components/Posts.vue'))
+Vue.component('createPost', require('./components/CreatePost.vue'))
+
+
+/**
+ * Next, we will create a fresh Vue application instance and attach it to
+ * the page. Then, you may begin adding components to this application
+ * or customize the JavaScript scaffolding to fit your unique needs.
+ */
+
+const app = new Vue({
+    el: '#app',
+    store
+});
+```
+

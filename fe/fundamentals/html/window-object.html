@@ -42,11 +42,12 @@
                 if (info == null) {
                     alert('info not found');
                 }
-                info.innerText = navigator.appCodeName + '\r\n' +
-                     navigator.appName + '\r\n' +
-                     navigator.appVersion + '\r\n' +
-                     navigator.platform + '\r\n' +
-                     navigator.userAgent;
+                info.innerText = `appCodeName: ${navigator.appCodeName}
+                    appName: ${navigator.appName}
+                    appVersion: ${navigator.appVersion}
+                    platform: ${navigator.platform}
+                    userAgent: ${navigator.userAgent}
+                `;
             };
 
             window.onclose = function() {

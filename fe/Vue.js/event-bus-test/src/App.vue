@@ -42,12 +42,11 @@ export default {
         // });
         this.$eventBus = eventBus;
 
+        // regex 테스트
         const regex = /^(?<date>[0-9]{4})\s*\|\s*(?<time>\d{2}\:\d{2}:\d{2}).+(\|\s*MDN\s*\:\s*(?<mdn>\d+)).+(\|\s*N->N\s*COUNT\s*\:\s*(?<count>\d+)).*/;
-
         var pattern = '0930| 05:33:30| 1|MDN : 01067003951 | TARIFF : MVNOTING CJHV_LTE26 | BLOCK_SVC N | C_TIME : 2021/09/23 05:35:32.600668 | UP_TIME : 2021/09/23 05:35:32.600668 | DB STAT : 0 | RCV STAT : 2 |N->N COUNT : 3\r\n';
 
         let matched = pattern.match(regex);
-
         if (matched != null) {
             console.log(matched.groups);
             let parsed = matched.groups; // { date: '...', time: '', mdn: '...', count: '...' }
@@ -56,12 +55,6 @@ export default {
         } else {
             console.log(`NOT MATCHED (${matched}) !!!`);
         }
-
-        // const regex = /(?<code>\d+)_(?<name>\S+)\.sql/;
-        // const fileName = '1_create_users_table.sql';
-        // const groups = fileName.match(regex).groups;
-        // console.log(groups.code);  // 1
-        // console.log(groups.name);  // create_users_table
     }
 }
 </script>

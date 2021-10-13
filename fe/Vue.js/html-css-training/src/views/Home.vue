@@ -1,5 +1,5 @@
 <template>
-    <div class="home"></div>
+    <div class="home">Home of App.</div>
 </template>
 
 <script>
@@ -15,4 +15,6 @@ export default {
 </script>
 
 <style scoped>
-</style>
+div.class {
+}
+</style>1

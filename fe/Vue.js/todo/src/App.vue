@@ -1,13 +1,16 @@
 <template>
-    <div id="app">
-        <img alt="Vue logo" src="./assets/logo.png" />
+    <div class="header">
+        <app-header></app-header>
     </div>
 </template>
 
 <script>
+import AppHeader from './layouts/AppHeader.vue'
+
 export default {
     name: 'App',
     components: {
+        AppHeader
     }
 }
 </script>

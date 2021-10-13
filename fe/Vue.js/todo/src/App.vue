@@ -1,16 +1,23 @@
 <template>
-    <div class="header">
-        <app-header></app-header>
+    <div class="app-layout">
+        <div class="header">
+            <app-header></app-header>
+        </div>
+        <div class="app-content">
+            <todo-main></todo-main>
+        </div>
     </div>
 </template>
 
 <script>
 import AppHeader from './layouts/AppHeader.vue'
+import TodoMain from './views/TodoMain.vue'
 
 export default {
     name: 'App',
     components: {
-        AppHeader
+        AppHeader,
+        TodoMain
     }
 }
 </script>

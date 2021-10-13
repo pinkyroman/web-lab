@@ -12,13 +12,15 @@
 <script>
 import AppHeader from './layouts/AppHeader.vue'
 import TodoMain from './views/TodoMain.vue'
+import { store } from './store/store'
 
 export default {
     name: 'App',
     components: {
         AppHeader,
         TodoMain
-    }
+    },
+    store,
 }
 </script>
 

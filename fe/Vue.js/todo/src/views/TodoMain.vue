@@ -1,12 +1,28 @@
 <template>
     <div class="todo-main">
-        <h3>main contents comes here!</h3>
+        <p>Hello, World!</p>
+        <ul>
+            <todo-item
+                v-for="todo in todoList"
+                :key="todo.id"
+                v-bind="todo"
+            ></todo-item>
+        </ul>
     </div>
 </template>
 
 <script>
+import TodoItem from '../components/TodoItem.vue'
+import { mapState } from 'vuex'
+
 export default {
     name: 'TodoMain',
+    components: {
+        TodoItem,
+    },
+    computed: {
+        ...mapState(['todoList']),
+    },
 }
 </script>
 
@@ -18,6 +34,9 @@ export default {
     padding: 8px;
     border: 2px solid rgb(53, 53, 53);
     border-radius: 8px;
-    text-align: center;
+}
+
+ul {
+    padding-left: 0px;
 }
 </style>

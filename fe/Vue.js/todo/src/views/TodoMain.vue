@@ -5,7 +5,7 @@
             <todo-item
                 v-for="todo in todoList"
                 :key="todo.id"
-                v-bind="todo"
+                :id="todo.id"
             ></todo-item>
         </ul>
     </div>

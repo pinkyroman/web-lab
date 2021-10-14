@@ -1,51 +1,55 @@
 <template>
     <li class="todo-item" @click="showTodoDetails">
+        <!-- checkbox -->
         <span>
             <input
                 type="checkbox"
                 name="progress"
                 id="progress"
-                v-model="currentState.completed"
+                v-model="currentState(id).completed"
             />
         </span>
-        <span :class="{ 'todo-completed': currentState.completed }">
-            {{ currentState.subject }}
+        <!-- subject  -->
+        <span :class="{ 'todo-completed': currentState(id).completed }">
+            {{ currentState(id).subject }}
         </span>
+        <!-- show/hide details -->
+        <todo-item-details v-show="showDetails" id="id"></todo-item-details>
     </li>
 </template>
 
 <script>
-import { todoModel } from '../models/todo'
+import { mapGetters } from 'vuex'
+import TodoItemDetails from './TodoItemDetails.vue';
 
 export default {
+    components: { TodoItemDetails },
     name: 'TodoItem',
     props: {
-        ...todoModel
+        /*
+            prop 을 컴포넌트 내에서 직접 변경하는 것은 피해야 한다. 
+            즉, read-only 로만 사용 하는 것이 좋다.
+            부모 컴포넌트가 다시 렌더링 될 때, 부모 컴포넌트가 지정한 값으로 오버라이트 되기 때문.
+        */
+        id: {
+            type: String,
+            required: true,
+            default: null,
+        }
     },
     data() {
         return {
-            /*
-                prop 을 직접 변경하는 것은 피해야 한다.
-                부모 컴포넌트가 다시 렌더링 될 때, 부모 컴포넌트가 지정한 값으로 오버라이트 되기 때문.
-                따라서, 별도로 data에 사본을 준비하고 이를 활용한다.
-            */
-            currentState: {
-                ...todoModel
-            },
+            showDetails: false,
         };
     },
-    mounted() {
-        // prop 으로 전달 받은 값을 currentState로 복사
-        let currentState = this.currentState;
-        for (const key in currentState) {
-            if (Object.hasOwnProperty.call(currentState, key)) {
-                currentState[key] = this[key];
-            }
-        }
+    computed: {
+        ...mapGetters({
+            currentState: 'getTodo' // getTodo getter를 currentState로 맵핑
+        }),
     },
     methods: {
         showTodoDetails() {
-
+            this.showDetails = !this.showDetails;
         }
     }
 }

@@ -1,6 +1,6 @@
 <template>
     <div class="todo-main">
-        <p>Hello, World!</p>
+        <p>TODO: 새로운 항목 추가 컴포넌트</p>
         <ul>
             <todo-item
                 v-for="todo in todoList"

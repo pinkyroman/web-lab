@@ -1,7 +1,9 @@
-export const todoModel = {
-    id: '',
-    subject: '',
-    description: '',
-    completed: false,
-    createdAt: null,
+export function newTodoModel() {
+    return {
+        id: '',
+        subject: '',
+        description: '',
+        completed: false,
+        createdAt: null,
+    };
 }

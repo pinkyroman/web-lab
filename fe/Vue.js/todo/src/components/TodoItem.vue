@@ -1,5 +1,5 @@
 <template>
-    <li class="todo-item" @click="showTodoDetails">
+    <li class="todo-item">
         <!-- checkbox -->
         <span>
             <input
@@ -10,11 +10,11 @@
             />
         </span>
         <!-- subject  -->
-        <span :class="{ 'todo-completed': currentState(id).completed }">
+        <span class="todo-subject" :class="{ 'todo-completed': currentState(id).completed }" @click="showTodoDetails">
             {{ currentState(id).subject }}
         </span>
         <!-- show/hide details -->
-        <todo-item-details v-show="showDetails" id="id"></todo-item-details>
+        <todo-item-details v-show="showDetails" :id="id"></todo-item-details>
     </li>
 </template>
 
@@ -23,8 +23,10 @@ import { mapGetters } from 'vuex'
 import TodoItemDetails from './TodoItemDetails.vue';
 
 export default {
-    components: { TodoItemDetails },
     name: 'TodoItem',
+    components: { 
+        TodoItemDetails 
+    },
     props: {
         /*
             prop 을 컴포넌트 내에서 직접 변경하는 것은 피해야 한다. 
@@ -64,7 +66,14 @@ li {
     padding: 4px 16px;
 }
 
+.todo-subject {
+    font-weight: bold;
+    cursor: pointer;
+}
+
 .todo-completed {
+    font-style: italic;
+    font-weight: unset;
     text-decoration-line: line-through;
 }
 </style>

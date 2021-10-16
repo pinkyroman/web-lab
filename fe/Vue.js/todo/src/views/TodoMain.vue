@@ -16,7 +16,7 @@
 </template>
 
 <script>
-import { mapState } from "vuex";
+import { mapGetters } from "vuex";
 import TodoNewItem from "../components/TodoNewItem.vue";
 import TodoItem from "../components/TodoItem.vue";
 
@@ -27,7 +27,9 @@ export default {
     TodoNewItem,
   },
   computed: {
-    ...mapState(["todoList"]),
+    ...mapGetters({
+      todoList: "getTodoList"
+    }),
   },
 };
 </script>

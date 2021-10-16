@@ -2,6 +2,7 @@
   <div class="todo-new-item">
     <label for="subject" class="form-element subject">New To Do:</label>
     <input
+      ref="subject"
       type="text"
       class="form-element subject"
       placeholder="할 일의 제목을 입력 하세요 ..."
@@ -25,11 +26,10 @@ export default {
   methods: {
     ...mapMutations(["addTodo"]),
     addNewTodo() {
-      console.log("enter key pressed!");
-
       let todo = new newTodoModel();
       todo.subject = this.subject;
       this.addTodo(todo);
+      this.subject = "";
     },
   },
 };

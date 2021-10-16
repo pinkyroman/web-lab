@@ -44,7 +44,6 @@ export default {
     ...mapActions(["updateTodo"]),
     toggleEditingMode() {
       this.editing = !this.editing;
-      console.log(this.editing);
     },
     resize() {
       // https://www.geeksforgeeks.org/how-to-create-auto-resize-textarea-using-javascript-jquery/

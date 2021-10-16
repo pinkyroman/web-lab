@@ -9,17 +9,20 @@
                 v-model="currentState(id).completed"
             />
         </span>
+
         <!-- subject  -->
         <span class="todo-subject" :class="{ 'todo-completed': currentState(id).completed }" @click="showTodoDetails">
             {{ currentState(id).subject }}
         </span>
+        <span class="button-delete" @click="deleteTodo(id)">X</span>
+
         <!-- show/hide details -->
         <todo-item-details v-show="showDetails" :id="id"></todo-item-details>
     </li>
 </template>
 
 <script>
-import { mapGetters } from 'vuex'
+import { mapGetters, mapMutations } from 'vuex'
 import TodoItemDetails from './TodoItemDetails.vue';
 
 export default {
@@ -50,6 +53,9 @@ export default {
         }),
     },
     methods: {
+        ...mapMutations({
+            deleteTodo: 'deleteTodo'
+        }),
         showTodoDetails() {
             this.showDetails = !this.showDetails;
         }
@@ -75,5 +81,13 @@ li {
     font-style: italic;
     font-weight: unset;
     text-decoration-line: line-through;
+}
+
+.button-delete {
+    color: red;
+    float: right;
+    position: relative;
+    z-index: 597;
+    cursor: pointer;
 }
 </style>

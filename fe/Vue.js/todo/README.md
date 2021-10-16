@@ -23,5 +23,6 @@ npm run lint
 ### Customize configuration
 See [Configuration Reference](https://cli.vuejs.org/config/).
 
-# 고려 사항
-
+----
+# 추가해야 할 기능
+[ ] Sqlite 로 데이터 관리하기

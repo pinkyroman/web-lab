@@ -21,7 +21,7 @@ import TodoNewItem from "../components/TodoNewItem.vue";
 import TodoItem from "../components/TodoItem.vue";
 
 export default {
-  name: "TodoMain",
+  name: "TodoList",
   components: {
     TodoItem,
     TodoNewItem,

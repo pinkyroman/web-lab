@@ -9,4 +9,4 @@ export const getters = {
     getTodo: (state) => (id) => {
         return state.todoList.find(todo => todo.id == id);
     }
-}
+};

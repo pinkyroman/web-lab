@@ -33,17 +33,8 @@ export default {
       currentState: "getTodo",
     }),
   },
-  watch: {
-    // editing(from, to) {
-    //     if (from == false && to == true) {
-    //         this.updateTodo(this.currentState(this.id));
-    //     }
-    // }
-  },
   methods: {
-    ...mapActions([
-      "updateTodo"
-    ]),
+    ...mapActions(["updateTodo"]),
     toggleEditingMode() {
       this.editing = !this.editing;
     },

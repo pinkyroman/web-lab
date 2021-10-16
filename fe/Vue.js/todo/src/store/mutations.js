@@ -16,4 +16,4 @@ export const mutations = {
         }
         console.warn(`The todo with id:'${id} not found.`);
     }
-}
+};

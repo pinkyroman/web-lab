@@ -41,7 +41,9 @@ export default {
     // }
   },
   methods: {
-    ...mapActions(["updateTodo"]),
+    ...mapActions([
+      "updateTodo"
+    ]),
     toggleEditingMode() {
       this.editing = !this.editing;
     },

@@ -11,9 +11,6 @@
             </span>
             <span class="header-title">Simple To Do</span>
         </div>
-        <div>
-            <hr />
-        </div>
     </div>
 </template>
 

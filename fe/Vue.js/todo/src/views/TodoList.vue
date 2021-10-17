@@ -1,5 +1,5 @@
 <template>
-    <div class="todo-main">
+    <div class="todo-main" rounded="lg" min-height="70vh">
         <div class="new-todo">
             <todo-new-item></todo-new-item>
         </div>

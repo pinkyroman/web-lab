@@ -6,8 +6,14 @@
         <router-link to="/about">About</router-link>
       </div>
 
-      <router-view />
+      <v-container>
+        <router-view />
+      </v-container>
     </v-main>
+
+    <v-footer app>
+        FOOTER COMES HERE.
+    </v-footer>
   </v-app>
 </template>
 
@@ -19,7 +25,9 @@
   text-align: center;
   color: #2c3e50;
 }
+</style>
 
+<style lang="scss" scoped>
 #nav {
   padding: 30px;
 

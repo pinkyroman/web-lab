@@ -1,60 +1,28 @@
 <template>
   <v-app>
-    <v-app-bar
-      app
-      color="primary"
-      dark
-    >
-      <div class="d-flex align-center">
-        <v-img
-          alt="Vuetify Logo"
-          class="shrink mr-2"
-          contain
-          src="https://cdn.vuetifyjs.com/images/logos/vuetify-logo-dark.png"
-          transition="scale-transition"
-          width="40"
-        />
-
-        <v-img
-          alt="Vuetify Name"
-          class="shrink mt-1 hidden-sm-and-down"
-          contain
-          min-width="100"
-          src="https://cdn.vuetifyjs.com/images/logos/vuetify-name-dark.png"
-          width="100"
-        />
-      </div>
-
-      <v-spacer></v-spacer>
-
-      <v-btn
-        href="https://github.com/vuetifyjs/vuetify/releases/latest"
-        target="_blank"
-        text
-      >
-        <span class="mr-2">Latest Release</span>
-        <v-icon>mdi-open-in-new</v-icon>
-      </v-btn>
-    </v-app-bar>
-
     <v-main>
-      <HelloWorld/>
+      <!-- full-height은 브라우저 높이를 100%, 수직으로 가운데 정렬시킴 -->
+      <v-container fluid fill-height>
+        <v-row>
+          <!-- text-center는 수평 가운데 정렬 -->
+          <v-col class="text-center" cols="12">
+            <!-- 타이포 스타일은 title, 글자색은 흰색으로 설정 -->
+            <h1 class="title white--text">반가워요!</h1>
+            <p class="caption">by VueJS</p>
+            <img src="./assets/hello-pwa.png" alt="">
+          </v-col>
+        </v-row>
+      </v-container>
     </v-main>
   </v-app>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld';
-
-export default {
-  name: 'App',
-
-  components: {
-    HelloWorld,
-  },
-
-  data: () => ({
-    //
-  }),
-};
+  export default {
+    name: 'App',
+    created() {
+      // 배경색을 다크모드로 함
+      this.$vuetify.theme.dark = true;
+    }
+  }
 </script>

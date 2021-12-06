@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>JavaScript Function Tests</title>
+  </head>
+  <body></body>
+  <script>
+    function add(p1, p2) {
+      return p1 + p2;
+    }
+    console.dir(add);
+    let f1 = add;
+    console.log(f1(1, 2));
+    let f2 = function xyz(p1, p2) {
+      return p1 + p2;
+    };
+    console.log(f2(3, 4));
+    let f3 = function (p1, p2) {
+      return p1 + p2;
+    };
+    console.log(f3(5, 6));
+    let f4 = (p1, p2) => p1 + p2;
+    console.log(f4(7, 8));
+    let f5 = new Function('p1', 'p2', 'return p1 + p2');
+    console.log(f5(9, 10));
+
+    function f6(a, b, c) {
+      console.log('Function Declaration:');
+      console.log(this);
+      console.log(arguments);
+    }
+
+    let o = {
+      m1() {
+        f6();
+      },
+      m2() {
+        let f = function (a, b, c) {
+          console.log('Function Expression in Object:');
+          console.log(this);
+          console.log(arguments);
+        };
+        f();
+      },
+      m3(a, b, c) {
+        console.log('Method in Object:');
+        console.log(this);
+        console.log(arguments);
+      },
+      arrowf() {
+        let f = (a, b, c) => {
+          console.log('Arrow Function:');
+          console.log(this);
+          console.log(arguments);
+        };
+        f();
+      },
+    };
+    o.m1();
+    o.m2();
+    o.m3();
+    o.arrowf();
+
+    // IIFE (Immediately Invoked Function Expression)
+    /*
+        function() { ... }(); 와 같은 수식이 불가한 이유는 Automatic Semicolon Insertion (ASI) 기능 때문. 
+        함수 코드 블록의 닫는 중괄호 '}' 뒤에 ';'을 자동으로 삽입한다.
+        따라서, 위와 같이 그룹 연산자 ()를 사용해 주어야 한다.
+        첫 번째 괄호는 함수 수식 평가, 두 번째 괄호는 함수 호출 연산자.
+    */
+    (function () {
+      console.log('executed!');
+    })();
+
+    // 괄호 연산자를 안 쓴다면, 단항 연산자를 사용할 수도 있음.
+    +(function () {
+      console.log('evaluated by unray operator.');
+    })();
+    // 혹은, 타입 캐스팅을 ...
+    !!(function () {
+      console.log('evaluated by type casting.');
+    })();
+  </script>
+</html>

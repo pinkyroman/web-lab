@@ -38,7 +38,6 @@ console.log('point.constructor = ' + point.constructor.name);
 console.log('c1 has own property "constructor" // ' + c1.hasOwnProperty('constructor')); // false
 console.log('c1.__proto__ has own property "constructor" // ' + c1.__proto__.hasOwnProperty('constructor')); // true
 console.log('c1 constructor = ' + c1.constructor.name);
-
 /*
     객체 생성 방식에 따른 프로토타입의 결정
 */
@@ -144,6 +143,8 @@ let user = new User('Ozzy');
 ].forEach(user => {
     console.log(`ID: ${user.id}, Name: ${user.name}`);
 });
+console.log('user AGAIN: ');
+console.log(user);
 
 console.log(User.staticProperty);
 User.staticMethod();
@@ -168,3 +169,22 @@ console.log(Object.keys(user));
 console.log(Object.values(user));
 console.log(Object.entries(user));
 
+const Person = (function () {
+    let _age = 0;
+
+    function Person(name, age) {
+        this.name = name;
+        _age = age;
+    }
+
+    Person.prototype.sayHi = function () {
+        console.log(`Hi, I'm ${this.name} and I'm ${_age} years old.`);
+    };
+
+    return Person;
+}());
+
+const me = new Person('Ozzy', 30);
+const you = new Person('Jane', 25);
+you.sayHi();
+me.sayHi();

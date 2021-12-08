@@ -83,5 +83,11 @@
     !!(function () {
       console.log('evaluated by type casting.');
     })();
+
+    function bar(a) {
+      console.log(arguments);
+      return a * 10;
+    }
+    bar(10);
   </script>
 </html>

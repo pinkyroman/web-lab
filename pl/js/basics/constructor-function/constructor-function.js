@@ -39,3 +39,43 @@ console.log(p2.id);
 console.log('p1 info:');
 console.log(p1);
 console.log(p1.getId());
+
+//////////////////////////////////////////////////////////////////////////////
+
+const Person2 = (function () {
+    function Person2(firstName, lastName) {
+        // private variables for each instance
+        let $firstName = firstName;
+        let $lastName = lastName;
+
+        // private variable accessors for each instance
+        Object.defineProperties(this, {
+            firstName: {
+                get() {
+                    return $firstName;
+                }
+            },
+            lastName: {
+                get() {
+                    return $lastName;
+                }
+            },
+        });
+    }
+
+    // inherited accessors
+    Object.defineProperties(Person.prototype, {
+        fullName: {
+            get() {
+                return `${this.firstName} ${this.lastName}`;
+            },
+        },
+    });
+
+    return Person2;
+})();
+
+const alice = new Person2('Alice', 'Cooper');
+const ozzy = new Person2('Ozzy', 'Osbourne');
+console.log(ozzy);
+console.log(alice);

@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Misc. form elements in HTML5</title>
+    
+    <style>
+        fieldset {
+            margin: 16px auto;
+            width: 70%;
+            padding: 0.5em;
+            border: 1px solid darkslateblue;
+            border-radius: 0.3em;
+            background: lightyellow;
+        }
+        legend {
+            font-weight: bold;
+            font-size: 1.0em;
+            color: darkslateblue;
+        }
+        button {
+            border-radius: 0.3em;
+        }
+        p.icon-button-caption {
+            margin: 2px;
+            padding: 0;
+            font-size: 0.8em;
+            color:indianred
+        }
+    </style>
+</head>
+<body>
+    <form>
+        <fieldset>
+            <legend>textarea</legend>
+            <textarea name="myText" rows="4" cols="50" placeholder="enter some text here ..."></textarea>
+        </fieldset>
+        <fieldset>
+            <legend>button</legend>
+            <button type="button" name="button">button</button>
+            <button type="menu" name="menu-button">menu</button>
+            <button type="reset" name="reset-button">reset</button>
+            <button type="submit" name="submit-button">submit</button>
+        </fieldset>
+        <fieldset>
+            <legend>button 활용</legend>
+            <button type="button" class="icon-button" onclick="total.value=999">
+                <img src="./images/icons8-button-60.png" alt="">
+                <p class="icon-button-caption">
+                    구매 하기
+                </p>
+            </button>
+            <input type="number" name="total" value="0">
+        </fieldset>
+        <fieldset>
+            <legend>progress</legend>
+            <progress></progress>
+            <progress value="35" max="100"></progress>
+            <progress id="copyProgress"></progress> <label for="copyProgress" id="progressValue">0 %</label>
+        </fieldset>
+        <fieldset>
+            <legend>meter</legend>
+            <meter min="0" max="1000" value="100" low="300" high="700" optimum="500"></meter>
+    </form>
+    <script>
+        const copyProgress = document.getElementById('copyProgress');
+        const progressValue = document.getElementById('progressValue');
+        copyProgress.max = 100;
+        copyProgress.value = 0;
+
+        let progress = 0;
+        setInterval(() => {
+            progress += 1;
+            if (progress >= copyProgress.max) {
+                progress = 0;
+            }
+            copyProgress.value = progress;
+            progressValue.innerText = `${progress} %`;
+        }, 300);
+    </script>
+</body>
+</html>

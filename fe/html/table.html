@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tables</title>
+    <style>
+        table {
+            width: 70%;
+            border: 1px solid #222;
+            border-collapse: collapse;
+        }
+        thead {
+            background: #eee;
+        }
+        th, td {
+            border: 1px solid #ccc;
+            padding: 5px;
+        }
+        th {
+            font-size: 1.0em;
+        }
+        td {
+            font-size: 0.8em;
+        }
+        tfoot {
+            background: darkgrey;
+            font-size: 1.5em;
+        }
+    </style>
+</head>
+
+<body>
+    <table>
+        <caption>A caption comes here</caption>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Age</th>
+                <th>Description</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            <tr>
+                <th>1001</th>
+                <td>John</td>
+                <td>31</td>
+                <td>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quisquam, quos.</td>
+            </tr>
+            <tr>
+                <th>1002</th>
+                <td>Jane</td>
+                <td>25</td>
+                <td>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quisquam, quos.</td>                
+            </tr>
+        </tbody>
+
+        <tfoot>
+            <tr>
+                <th colspan="2">Total</th>
+                <td colspan="2">2</td>
+            </tr>
+        </tfoot>
+    </table>    
+</body>
+
+</html>

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Forms (Basic)</title>
+    <style>
+        h2 {
+            color:darkslateblue;
+            text-align: center;
+        }
+        form {
+            margin: 16px auto;
+            width: 400px;
+            padding: 1em;
+            border: 1px solid #CCC;
+            border-radius: 0.3em;
+        }
+        ul > li {
+            list-style: none;
+        }
+    </style>
+</head>
+<body>
+    <h2>레이블과 사용자 입력</h2>
+    <form>
+        <label for="id">ID</label>
+        <input type="text" id="id" name="id" value="" autocomplete="on">
+        <br>
+        <label for="name">Password</label>
+        <input type="password" id="name" name="name" value="" autocomplete="off">
+    </form>
+
+    <h2>라디오 버튼 및 체크박스</h2>    
+    <form>
+        <h3>수강 분야(다수 선택 가능):</h3>
+        <ul>
+            <li><label><input type="checkbox" value="c0">문법</label></li>
+            <li><label><input type="checkbox" value="c1">작문</label></li>
+            <li><label><input type="checkbox" value="c2">독해</label></li>
+        </ul>
+    </form>
+
+    <h2>체크박스</h2>
+    <form>
+        <h3>수강 과목(1과목만 선택 가능):</h3>
+        <ul>
+            <li><label><input type="radio" name="subject" value="en">영어</label></li>
+            <li><label><input type="radio" name="subject" value="cn">중국어</label></li>
+            <li><label><input type="radio" name="subject" value="jp">일본어</label></li>
+        </ul>
+    </form>
+</body>
+</html>

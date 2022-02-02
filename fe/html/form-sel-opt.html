@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>select, optroup, option tags in HTML5</title>
+    <style>
+        fieldset {
+            margin: 8px auto;
+            width: 500px;
+            padding: 0.5em;
+            border: 1px solid darkslateblue;
+            border-radius: 0.3em;
+        }
+        legend {
+            font-weight: bold;
+            font-size: 1.5em;
+            color: darkslateblue;
+        }
+    </style>
+</head>
+<body>
+    <form>
+        <fieldset>
+            <legend>select and option Tags (signle-select)</legend>
+            <select id="class">
+                <optgroup label="공과대학">
+                    <option value="arch">건축공학과</option>
+                    <option value="mech">기계공학과</option>
+                    <option value="elec">전기공학과</option>
+                    <option value="inds">산업공학과</option>
+                    <option value="comp">컴퓨터공학과</option>
+                    <option value="chem">화학공학과</option>    
+                </optgroup>
+                <optgroup label="인문대학">
+                    <option value="hist">사학과</option>
+                    <option value="lang">어문학과</option>
+                    <option value="phil">철학과</option>
+                </optgroup>
+            </select>
+        </fieldset>
+        <fieldset>
+            <legend>select and option Tags (multi-select)</legend>
+            <select id="class" size="5" multiple>
+                <optgroup label="공과대학">
+                    <option value="arch">건축공학과</option>
+                    <option value="mech">기계공학과</option>
+                    <option value="elec">전기공학과</option>
+                    <option value="inds">산업공학과</option>
+                    <option value="comp">컴퓨터공학과</option>
+                    <option value="chem">화학공학과</option>    
+                </optgroup>
+                <optgroup label="인문대학">
+                    <option value="hist">사학과</option>
+                    <option value="lang">어문학과</option>
+                    <option value="phil">철학과</option>
+                </optgroup>
+            </select>            
+        </fieldset>
+        <fieldset>
+            <legend>datalist Tag</legend>
+            <input type="text" list="classes">
+            <datalist id="classes">
+                <option value="arch">건축공학과</option>
+                <option value="mech">기계공학과</option>
+                <option value="elec">전기공학과</option>
+                <option value="inds">산업공학과</option>
+                <option value="comp">컴퓨터공학과</option>
+                <option value="chem">화학공학과</option>    
+            </datalist>
+        </fieldset>
+    </form>
+</body>
+</html>

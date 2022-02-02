@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Input in HTML5</title>
+    <style>
+        form {
+            margin: 16px auto;
+            width: 70%;
+            padding: 0.5em;
+            border: 1px solid #949494;
+            border-radius: 0.3em;
+            background: #c0c0c0;
+        }
+        fieldset {
+            margin: 16px auto;
+            padding: 0.5em;
+            border: 1px solid darkslateblue;
+            border-radius: 0.3em;
+        }
+        legend {
+            font-weight: bold;
+            font-size: 1.2em;
+            color: darkslateblue;
+        }
+        table {
+            margin: 12px auto;
+            width: 100%;
+            border: 1px solid #585858;
+            border-collapse: collapse;
+        }
+        table > tr, th, td {
+            border: 1px solid #585858;
+            border-collapse: collapse;
+        }
+        input {
+            margin: 4px;
+            /* width: 80%; */
+            border: 1px solid darksalmon;
+        }
+    </style>
+</head>
+<body>
+    <form>
+        <fieldset>
+            <legend>input 태그</legend>
+            <table>
+                <caption>type 별 표시 형태</pre></caption>
+                <colgroup>
+                </colgroup>
+                <thead>
+                    <tr>
+                        <th>type 값</th>
+                        <th>표시 형태</th>
+                    </tr>                                
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>text</td>
+                        <td>
+                            <input type="text" name="text-input" value="abc">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            password
+                        </td>
+                        <td>
+                            <input type="password" name="password-input" value="12345678">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            search
+                        </td>
+                        <td>
+                            <input type="search" name="search-input" value="search">
+                        </td>                    
+                    </tr>
+                    <tr>
+                        <td>
+                            url
+                        </td>
+                        <td>
+                            <input type="url" name="url-input" value="http://www.example.com">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>email</td>
+                        <td>
+                            <input type="email" name="email-input" value="user@example.com">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>tel</td>
+                        <td>
+                            <input type="tel" name="tel-input" value="010-1234-5678">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>number</td>
+                        <td>
+                            <input type="number" name="number-input" value="12345">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>range</td>
+                        <td>
+                            <input type="range" name="range-input" min="0" max="100" step="5" value="15">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>radio</td>
+                        <td>
+                            <label><input type="radio" name="radio-input" value="1">1</label>
+                            <label><input type="radio" name="radio-input" value="2" checked>2</label>
+                            <label><input type="radio" name="radio-input" value="3">3</label>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>checkbox</td>
+                        <td>
+                            <label><input type="checkbox" name="checkbox-input" value="1">1</label>
+                            <label><input type="checkbox" name="checkbox-input" value="2">2</label>
+                            <label><input type="checkbox" name="checkbox-input" value="3" checked>3</label>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>color</td>
+                        <td>
+                            <input type="color" name="color-input" value="#6867c1">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>date</td>
+                        <td>
+                            <input type="date" name="date-input" value="2022-02-02">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>month</td>
+                        <td>
+                            <input type="month" name="month-input" value="2022-02">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>week</td>
+                        <td>
+                            <input type="week" name="week-input" value="2022-W05">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>time</td>
+                        <td>
+                            <input type="time" name="time-input" value="12:00">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>datetime</td>
+                        <td>
+                            <input type="datetime" name="datetime-input" value="2022-02-02T12:00+09:00">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>datetime-local</td>
+                        <td>
+                            <input type="datetime-local" name="datetime-local-input" value="2022-02-02T12:00">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>time</td>
+                        <td>
+                            <input type="time" name="time-input" value="16:00">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>submit</td>
+                        <td>
+                            <input type="submit" name="submit-input" value="submit">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>reset</td>
+                        <td>
+                            <input type="reset" name="reset-input" value="reset">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>image</td>
+                        <td>
+                            <input type="image" name="image-input" src="https://www.google.com/images/branding/googlelogo/2x/googlelogo_color_272x92dp.png" alt="google logo" height="16.0em">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>button</td>
+                        <td>
+                            <button type="button" name="button-input" onclick="alert('CLICKED!')">button</button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>file</td>
+                        <td>
+                            <input type="file" name="file-input">
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </fieldset>
+    </form>
+</body>
+</html>

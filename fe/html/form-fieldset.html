@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>form with fieldset</title>
+    <style>
+        fieldset {
+            margin: 16px auto;
+            width: 70%;
+            padding: 0.5em;
+            border: 1px solid darkslateblue;
+            border-radius: 0.3em;
+        }
+        fieldset > legend {
+            font-weight: bold;
+            font-size: 1.2em;
+            color: darkslateblue;
+        }
+    </style>
+</head>
+<body>
+    <form>
+        <fieldset>
+            <legend>개인 정보</legend>
+            <ul>
+                <li>
+                    <label for="name">이름</label>
+                    <input type="text" id="name" placeholder="이름을 입력 하세요...">                    
+                </li>
+                <li>
+                    <label for="email">이메일 주소</label>
+                    <input type="email" id="email" placeholder="이메일을 입력 하세요...">
+                </li>
+            </ul>
+        </fieldset>
+        <fieldset>
+            <legend>로그인 정보</legend>
+            <ul>
+                <li>
+                    <label for="id">ID</label>
+                    <input type="text" id="id" placeholder="ID를 입력 하세요...">
+                </li>
+                <li>
+                    <label for="password">Password</label>
+                    <input type="password" id="password" placeholder="Password를 입력 하세요...">
+                </li>
+        </fieldset>
+    </form>
+</body>
+</html>

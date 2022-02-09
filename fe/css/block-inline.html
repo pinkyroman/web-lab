@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Block and Inline models in CSS</title>
+    <style>
+        #block label, 
+        #block input {
+            display: block;
+            margin: 8px;
+            padding: 4px;
+            width: 50%;
+            background-clip: content-box;
+            background-color: paleturquoise;
+            border: 1px dashed red;
+        }
+        .navbar {
+            display: inline-block;
+            border: 1px solid black;
+        }
+        .nav-menubar {
+            display: inline-block;
+            padding-left: 0px;
+        }
+        .nav-menubar-item {
+            display: inline-block;
+            list-style: none;
+            margin: 0px 8px;
+            /* padding: 4px; */
+        }
+        .circle {
+            margin: 8px auto;
+            border: 4px solid black;
+            border-radius: 50%;
+        }
+    </style>
+</head>
+<body>
+    <!-- 인라인/블록 모드의 차이 비교 -->
+    <div id="inline">
+        <label>ID:</label>
+        <input type="text">
+    </div>
+    <div id="block">
+        <label>Address:</label>
+        <input type="text">
+    </div>
+
+    <!-- 목록으로 nav 만들기 -->
+    <nav class="navbar">
+        <ul class="nav-menubar">
+            <li class="nav-menubar-item"><a href="#">파일</a></li>
+            <li class="nav-menubar-item"><a href="#">편집</a></li>
+            <li class="nav-menubar-item"><a href="#">보기</a></li>
+        </ul>
+    </nav>
+
+    <div class="circle" style="width: 300px; height: 300px; background-color: burlywood;"></div>
+</body>
+</html>

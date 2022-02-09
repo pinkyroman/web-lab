@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Text-related Styles</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Oswald:wght@300&family=Oxygen:wght@300&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Short+Stack&display=swap');
+        .font-default {
+            font-family: 'Oxygen';
+        }
+        .font-writing {
+            font-family: 'Short Stack';
+        }
+        p {
+            text-decoration: none;
+            text-shadow: 1px 1px 3px #8c8c8c;
+        }
+        .set-bg {
+            margin: 8px;
+            padding: 8px;
+            border: 4px dashed red;
+            background-color: lightblue;
+        }
+        div .bg-bg-clip {
+            background-clip: border-box;
+        }
+        div .bg-pd-box {
+            background-clip: padding-box;
+        }
+        div .bg-ct-box {
+            background-clip: content-box;
+        }
+        .bg-izumi {
+            margin: 0px auto;
+            padding: 8px 8px;
+            background-color: cornflowerblue;
+            background-image: url("https://w.namu.la/s/319fd1cfc9e05e762e8f532a8c6496175cd4a303608009a33019cf74823d36b2da0ff7c96aee21496a26d3a4f6912630947c802745d8ebc4107d15d95bc9d1e9aac13e738079724ef9ca4991416d702098ff92a2b2e47c46e1a52091aa9e9d9a");
+            background-repeat: no-repeat;
+            background-size: contain;
+            background-origin: content-box;
+            background-position: right bottom;
+            border: 4px dashed red;
+            color: white;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <p class="font-default">Default font: Hellow, World!</p>
+    <p class="font-writing">Handwriting font: Hello, World!</p>
+    <div style="background-color: antiquewhite;">
+        <p class="set-bg bg-bg-clip">background-clip: border-box</p>
+        <p class="set-bg bg-pd-box">background-clip: padding-box</p>
+        <p class="set-bg bg-ct-box">background-clip: content-box</p>
+    </div>
+    <div class="bg-izumi" style="width: 640px; height: 400px;">
+        Welcome to the world of CSS!
+    </div>
+</body>
+</html>

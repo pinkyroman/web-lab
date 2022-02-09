@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS Selectors</title>
+    <style>
+        /* Universal Selector: 모든 요소에 적용 */
+        * {
+            font-family: 'Cascadia Code PL', 'D2Coding ligature', 'IBM Plex Mono', 'Fira Code', 'PT Mono', 'Ubuntu Mono', Menlo, Monaco, 'Courier New', monospace;
+            font-size: 1.0em;
+        }
+        sup {
+            font-style: italic;
+            font-size: 0.7em;   
+        }
+        sup.emphasis {
+            font-weight: bold;
+            color: darkorange;
+        }
+
+        #container {
+            margin: 4px auto;
+            padding: 1em;
+            width: 90%;
+            border: 1px solid blueviolet;
+            border-radius: 0.3em;
+            background-color: cornsilk;
+        }
+
+        h1.chapter-title {
+            font-size: 2.0em;
+            font-weight: bold;
+            color: darkorange;
+        }
+        h1 .chapter-number {
+            font-size: 1.5em;
+            font-weight: bold;
+        }
+        h1 .chapter-word {
+            margin-left: -25px;
+            font-size: 0.5em;
+            font-weight: lighter;
+        }
+    </style>
+</head>
+<body>
+    <section id="container">
+        <article>
+            <h1 class="chapter-title">
+                <div class="chapter-number">
+                    <span class="chapter-number">38</span>
+                    <span class="chapter-word">장</span>                    
+                </div>
+                <div class="chapter-subject">
+                    브라우저의 렌더링 과정
+                </div>
+            </h1>
+
+            <p>구글의 V8 자바스크립트 엔진으로 빌드된 자바스크립트 런타임 환경<sup>runtime environment</sup>인 Node.js의 등장으로 자바스크립트는 웹 브라우저를 벗어나 서버 사이드 애플리케이션 개발에서도 사용할 수 있는 범용 개발 언어가 되었다. 하지만 자바스크립트가 가장 많이 사용되는 분야는 역시 웹 브라우저 환경에서 동작하는 웹페이지/애플리케이션의 클라이언트 사이드다.</p>
+            <p>... 중략 ...</p>
+            <p>이를 위해 브라우저가 HTML, CSS, 자바스크립트로 작성된 텍스트 문서를 어떻게 파싱(해석)하여 브라우저에 렌더링하는지 살펴보자.</p>
+            <ul>
+                <li>
+                    파싱<sup class="emphasis">parsing</sup><br>파싱(구문 분석<sup>syntax analysis</sup>)은 프로그래밍 언어의 문법에 맞게 작성된 텍스트 문서를 읽어 들여 실행하기 위해 텍스트 문서의 문자열을 토큰<sup>token</sup>으로 분해(어휘 분석<sup>lexical analysis</sup>)하고, 토큰에 문법적 의미와 구조를 반영하여 트리 구조의 자료구조인 파스 트리<sup>parse tree/syntax tree</sup>를 생성하는 일련의 과정을 말한다. (생략)                    
+                </li>
+                <li>
+                    렌더링<sup class="emphasis">rendering</sup><br>렌더링은 HTML, CSS, 자바스크립트로 작성된 문서를 파싱하여 브라우저에 시각적으로 출력하는 것을 말한다.
+                </li>
+            </ul>
+        </article>
+
+        <article>
+            <div class="chapter-title">
+                요청과 응답
+            </div>
+            <div class="chapter-number">39</div>
+        </article>
+    </section>
+</body>
+</html>

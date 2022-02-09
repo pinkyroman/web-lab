@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Positioning with CSS</title>
+    <style>
+        .to-left {
+            float: left;
+            margin-right: 10px;        
+        }
+        .to-right {
+            float: right;
+            margin-left: 10px;
+        }
+        .box {
+            box-sizing: border-box;
+            border: 2px solid black;
+            width: 100px;
+            height: 100px;
+        }
+        .inline {
+            display: inline-block;
+            border: 1px dotted red;
+            width: auto;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <div class="box to-left" style="background-color: goldenrod;"></div>
+        <div class="box to-left" style="background-color: cornflowerblue"></div>
+        <div class="box to-left" style="background-color: lightgreen"></div>
+        <div class="inline clipped">
+            <h4>What I really want is ..</h4>
+            <p>You may already know that I've loved you since ...</p>
+        </div>
+        <div class="box to-right" style="background-color: pink;"></div>
+    </div>
+</body>
+
+</html>

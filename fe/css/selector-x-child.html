@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>구조 선택자</title>
+    <style>
+        ul {
+            overflow: hidden;           
+        } 
+        li {
+            list-style: none;
+            float: left;
+            padding: 15px;
+        }
+        li:first-child {
+            border-radius: 10px 0 0 10px;           
+        }
+        li:last-child {
+            border-radius: 0 10px 10px 0;
+        }
+        li:nth-child(2n) {
+            background-color: aquamarine;
+        }
+        li:nth-child(2n+1) {
+            background-color: lightblue;
+        }
+        a:link {
+            color: inherit;
+            text-decoration: none;
+        }
+        a:active {
+            color: blue;
+            text-shadow: 0px 0px 3px red;
+        }
+        li:nth-child(2n) > a:hover {
+            color: white;
+            text-shadow: 0px 0px 3px darkorange;
+        }
+        li > a:active {
+            /* color: blue; */
+            /* text-shadow: 0px 0px 3px red; */
+            font-weight: bold;
+        }
+        li:nth-child(2n+1) > a:hover {
+            color: white;
+            text-shadow: 0px 0px 4px darkslateblue
+        }
+        p::selection {
+            color: white;
+            background-color: red;
+            text-decoration: underline;
+        }
+        .message-box {
+            overflow: hidden;
+            margin: 0px auto;
+            padding: 4px 8px;;
+            border: 1px dotted black;
+            border-radius: 0.5em;
+            height: 4.0em;
+            opacity: 1.0;
+
+            transition-duration: 0.6s;
+        }
+        input:not([type=checkbox]:checked) + .message-box {
+            height: 0px;
+            opacity: 0.0;
+        }
+    </style>
+</head>
+<body>
+    <ul>
+        <li><a href="#">File</a></li>
+        <li><a href="#">Edit</a></li>
+        <li><a href="#">View</a></li>
+        <li><a href="#">Window</a></li>
+        <li><a href="#">Help</a></li>
+    </ul>
+    <a href="#">Test Link - Click Here</a>
+    <p>
+        앞이 이 꽃 천하를 사랑의 칼이다, 그들을 피가 긴지라 청춘의 바이며, 피어나기 속잎나고, 튼튼하며. 고동을 것이다, 얼마나 피어나기 우리는 철환하였는가 봄바람이다. 가진 끝까지 품고 만천하의 천지는 생생하며. 오아이스도 대고.
+    </p>
+    <input type="checkbox" id="checkbox">체크 해봐!
+    <p class="message-box">
+        보내는 바이며. 발휘하기 아름다우냐? 열락의 맺어. 천고에 불어 쓸쓸한 하여도 목숨이 만천하의 품었기 없으면. 피가 보라. 밥을 인생을 심장은 용감하고 쓸쓸한 사랑의 운다. 같은 날카로우나 할지니. 꽃이 그들은 얼마나 청춘의 기쁘며, 이것은 가진 그들의 풍부하게 봄바람이다.
+    </p>
+    <p>End of Text</p>
+</body>
+</html>

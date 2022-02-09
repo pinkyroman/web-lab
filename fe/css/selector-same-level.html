@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>동위 선택자</title>
+    <style>
+        h5+li {
+            font-weight: bold;
+        }
+        h5~li {
+            font-size: 1.5em;
+        }
+        .link:hover {
+            color: green;
+            font-weight: bold;
+        }
+        .link:active {
+            color: red;
+        }
+        input[type=text]:enabled {
+            background-color: greenyellow;
+        }
+        input[type=text]:disabled {
+            color: #ccc;
+            background-color: #444;
+        }
+        input[type=text]:focus {
+            color: white;
+            background-color: cornflowerblue;
+        }
+        input[type=password] {
+            color: cornsilk;
+            background-color: plum;
+        }
+        input[type=checkbox]:checked + label + div {
+            height: 0px;
+        }
+        div {
+            overflow: hidden;
+            width: 650px;
+            height: 300px;
+
+            transition-duration: 0.5s;
+        }
+    </style>
+</head>
+<body>
+    <ul>
+        <h5>아이템을 선택 하시오:</h5>
+        <li>아이템 #1</li>
+        <li>아이템 #2</li>
+        <li class="link">아이템 #3</li>
+    </ul>
+    <input type="text" value="enabled">
+    <input type="text" value="disabled" disabled>
+    <input type="password" value="password">
+
+    <div>
+        <input type="checkbox" id="checkbox">
+        <label for="checkbox">체크 상태를 바꾸어 보세요!</label>
+        <div>
+            우리는 천하에 제일가는 청성의 용사다.<br>
+            우리는 압록강 물을 마신 청성의 용사다.<br>
+            기운 센 천하장사 무쇠로 만든 사람.
+        </div>        
+    </div>
+</body>
+</html>

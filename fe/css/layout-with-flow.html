@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Layout with flow property</title>
+    <style>
+        /* body 태그를 중앙 정렬 한다:
+            - width 속성 지정
+            - margin-left/margin-right 속성 값을 auto로 설정
+        */
+        body {
+            width: 80%;
+            margin: 0 auto;
+        }
+
+        #aside {
+            box-sizing: border-box;            
+            width: 180px;
+            float: left;
+            padding: 8px;
+            border: 2px solid black;
+            box-shadow: 2px 0px 5px gray;
+        }
+
+        .aside-title {
+            font-size: 1.2em;
+            font-weight: bold;
+        }
+
+        .aside-button {
+            float: right;
+        }
+
+        #section {
+            box-sizing: border-box;
+            width: calc(100% - 180px);
+            float: left;
+            padding: 8px;
+        }
+
+        .wrap {
+            /* float 를 사용하는 자식을 가진 부모는 overflow: hidden 속성을 지정해야 한다. 
+               이 속성을 설정하지 않으면, 다음의 엘리먼트가 밀고 올라온다(자식들이 float 이기 때문).
+            */
+            overflow: hidden; 
+        }
+    </style>
+</head>
+<body>
+    <div id="header"><h1>Header</h1></div>
+    <div id="navigation"><h1>Navigation</h1></div>
+    <div class="wrap">
+        <div id="aside">
+            <div clas="wrap">
+                <span class="aside-title">Aside</span>
+                <div class="aside-button">&lt</div>
+            </div>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi sed vulputate tortor. Aliquam vel mattis mi. Ut molestie ullamcorper erat. Mauris tempor a ex tincidunt cursus. Aliquam erat volutpat. Curabitur sed justo lobortis, vehicula ante et, imperdiet diam. Aliquam et risus sed odio elementum molestie eu vitae arcu. Nunc condimentum auctor justo sed dapibus. Nulla sollicitudin elit vel elit egestas, et faucibus purus tincidunt. Cras viverra ex sit amet elit eleifend, eu tristique nisi hendrerit. Ut a cursus lacus. Cras laoreet nulla vel dapibus malesuada. Etiam aliquam nunc et massa rutrum, a porttitor lacus sollicitudin.</p>
+        </div>
+        <div id="section">
+            <h1>Section</h1>
+            <p>Aenean dapibus, leo sit amet condimentum venenatis, quam erat finibus augue, vel bibendum nibh magna eget ligula. Integer malesuada fringilla ipsum, ut sodales nulla sodales ac. Donec feugiat convallis neque vel sodales. Phasellus cursus ultricies ex, at pellentesque dolor accumsan et. Nulla vel consequat risus. Suspendisse at metus vel lacus gravida accumsan nec tristique purus. Fusce eget lobortis ante, quis tincidunt turpis. Vestibulum eu nisi vitae odio suscipit lobortis non dictum ante. Maecenas augue sem, consequat porta dignissim vitae, imperdiet at nulla. Donec vel arcu vel neque ultricies finibus. In in efficitur ex. Fusce ultricies tellus libero, nec condimentum nibh cursus ut. Sed sit amet tellus id ipsum lacinia placerat. Sed in metus ac sapien pharetra condimentum. Pellentesque sed fermentum erat, sit amet mollis lacus. Proin viverra eget risus sit amet gravida.</p>
+        </div>
+    </div>
+    <div id="footer"><h1>Footer</h1></div>
+</body>
+</html>

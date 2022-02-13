@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bootstrap Grid System</title>
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">    
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.min.js" integrity="sha384-VHvPCCyXqtD5DqJeNxl2dtTyhF78xXNXdkwX1CZeRusQfRKp+tA7hAShOK/B/fQ2" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>    
+
+    <style>
+        body {
+            padding-top: 4em;
+        }
+    </style>
+</head>
+<body>
+    <div class="navbar navbar-dark bg-dark fixed-top navbar-expand-lg">
+        <div class="container">
+            <a href="#" class="navbar-brand">Bootstrap</a>
+            <!-- 툴바 버튼 -->
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-content">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbar-content">
+                <!-- 툴바 메뉴 -->
+                <ul class="navbar-nav mr-auto">
+                    <!-- 드롭다운 메뉴 아이템 -->
+                    <li class="nav-item dropdown">
+                        <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">HTML</a>
+                        <div class="dropdown-menu">
+                            <a href="#" class="dropdown-item">Geolocation</a>
+                            <a href="#" class="dropdown-item">Drag and Drop</a>
+                            <div class="dropdown-divider"></div>
+                            <a href="#" class="dropdown-item">Motion</a>
+                        </div>
+
+                    </li>
+                    <li class="nav-item"><a href="#" class="nav-link">HTML5</a></li>
+                    <li class="nav-item"><a href="#" class="nav-link">CSS3</a></li>
+                    <li class="nav-item"><a href="#" class="nav-link">ECMAScript5</a></li>
+                    <li class="nav-item"><a href="#" class="nav-link">Node.js</a></li>
+                    <li class="nav-item"><a href="#" class="nav-link">API</a></li>
+                </ul>
+                <form class="form-inline">
+                    <input type="text" class="form-control" placeholder="Search">
+                </form>
+                <ul class="navbar-nav">
+                    <li class="nav-item"><a href="#" class="nav-link">Node.js</a></li>
+                    <li class="nav-item"><a href="#" class="nav-link">API</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-5 col-sm-4">
+                <h1>Lorem ipsum</h1>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla semper felis at volutpat lobortis. Curabitur nunc dolor, blandit non tellus sed, tempor auctor massa.</p>
+                <p>Vivamus sagittis vitae dui eu condimentum. Quisque commodo tellus lacinia, congue ante sit amet, cursus nulla. Quisque tincidunt lacinia velit quis luctus. Integer tempor pharetra risus, a euismod nunc facilisis nec.</p>
+                <p>Vivamus vulputate augue neque, et bibendum lorem ornare id. Nunc auctor lacus ut eros faucibus dapibus. Cras ornare turpis sit amet augue malesuada, eu porttitor dui lacinia. </p>
+            </div>
+            <div class="col-5 col-sm-8">
+                <h1>Lorem ipsum</h1>
+                <p>Etiam nec lectus faucibus, molestie tellus nec, molestie tortor. Quisque consequat finibus libero eget dignissim. Fusce blandit, eros eget tincidunt ullamcorper, ligula urna tincidunt urna, nec faucibus dui elit eu velit. Sed porttitor felis vitae molestie sollicitudin. Etiam pretium feugiat dignissim. Duis luctus, urna non scelerisque varius, purus sem accumsan odio, vel viverra nisi enim vehicula neque. Mauris sollicitudin leo sem, id laoreet quam pharetra ut. Vestibulum nec mattis ipsum. Fusce viverra gravida diam, non ullamcorper dui varius vitae. Quisque dictum, lorem id auctor cursus, tortor metus tristique quam, ut mattis tortor tellus eu nisl.</p>
+                <p>Duis scelerisque turpis non ipsum malesuada, et hendrerit sapien tempor. Maecenas scelerisque accumsan dolor, eu rhoncus enim ullamcorper eget. Proin placerat sit amet turpis et maximus. Pellentesque venenatis ante vel dui placerat varius. Proin consequat sapien ante, id mattis ligula porttitor in. Integer venenatis interdum mi sit amet pretium. Mauris ut eros id ex hendrerit vestibulum ut vel ante. Donec in aliquet enim, et congue odio. Pellentesque id hendrerit lectus. Ut malesuada ultrices nibh, ullamcorper malesuada leo maximus auctor. Vivamus sit amet elementum erat, eu accumsan felis. Vestibulum nec cursus ex. Aliquam bibendum tortor vitae elementum faucibus. Nunc ac velit sit amet sapien vulputate condimentum nec fermentum enim. Quisque ultricies sem leo, eget varius sapien convallis sed.</p>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla semper felis at volutpat lobortis. Curabitur nunc dolor, blandit non tellus sed, tempor auctor massa.</p>
+                <p>Vivamus sagittis vitae dui eu condimentum. Quisque commodo tellus lacinia, congue ante sit amet, cursus nulla. Quisque tincidunt lacinia velit quis luctus. Integer tempor pharetra risus, a euismod nunc facilisis nec.</p>
+                <p>Vivamus vulputate augue neque, et bibendum lorem ornare id. Nunc auctor lacus ut eros faucibus dapibus. Cras ornare turpis sit amet augue malesuada, eu porttitor dui lacinia. </p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

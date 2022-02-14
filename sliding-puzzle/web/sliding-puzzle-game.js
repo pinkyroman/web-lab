@@ -25,12 +25,16 @@ export class SlidingPuzzleGame {
 
     #initialize(options) {
         const imageUrl = options?.imageUrl ?? './images/puzzle.jpg';
-        const size = options?.size ?? 4;
+        const size = options?.size ?? 2;
 
-        this.#tiles = new Tiles(imageUrl, size, () => {
+        const board = this.#getElement(options?.board ?? 'board');
+        const boardWidth = board.clientWidth;
+        const boardHeight = board.clientHeight;
+
+        this.#tiles = new Tiles(imageUrl, size, boardWidth, boardHeight, () => {
             this.#setupButtons(options);            
-            this.#board = this.#getElement(options?.board ?? 'board');
-            this.#board.appendChild(this.#tiles.elements);
+            board.appendChild(this.#tiles.elements);
+            this.#board = board;
 
             console.log('initialized successfully: ', this);
         });

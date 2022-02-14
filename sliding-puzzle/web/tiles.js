@@ -4,14 +4,20 @@ export class Tiles {
     #imageUrl;
     #size;
     #tileMap;
+    #boardWidth;
+    #boardHeight;
     #tileElements;
     #tileWidth;
     #tileHeight;
     
-    constructor(imageUrl, size, callback) {
+    constructor(imageUrl, size, boardWidth, boardHeight, callback) {
         this.#imageUrl = imageUrl;
         this.#size = size;
         this.#tileMap = new TileMap(size);
+        this.#boardWidth = boardWidth;
+        this.#boardHeight = boardHeight;
+        this.#tileWidth = Math.floor(boardWidth / this.#size);
+        this.#tileHeight = Math.floor(boardHeight / this.#size);
         this.#createTileElements(callback);
     }
 
@@ -25,8 +31,8 @@ export class Tiles {
         const ctx = canvas.getContext('2d');
         
         srcImage.onload = () => {
-            const sliceWidth = canvas.width = this.#tileWidth = Math.floor(srcImage.width / this.#size);
-            const sliceHeight = canvas.height = this.#tileHeight = Math.floor(srcImage.height / this.#size);
+            const sliceWidth = canvas.width = Math.floor(srcImage.width / this.#size);
+            const sliceHeight = canvas.height =Math.floor(srcImage.height / this.#size);
             const numberOfParts = this.#size * this.#size - 1;
 
             for (let i = 0; i < numberOfParts; i++) {
@@ -35,11 +41,8 @@ export class Tiles {
                 
                 ctx.drawImage(srcImage, 
                     sx, sy, sliceWidth, sliceHeight,
-                    0, 0, sliceWidth, sliceHeight);
-
-                this.#tileElements.push(this.#createTileElement(
-                    i, sy, sx, canvas.toDataURL()
-                ));
+                    0, 0, sliceWidth, sliceHeight);                
+                this.#tileElements.push(this.#createTileElement(i, canvas.toDataURL()));
             }
 
             if (callback) {
@@ -49,17 +52,19 @@ export class Tiles {
         };
     }
 
-    #createTileElement(id, top, left, url) {
+    #createTileElement(id, url) {
+        const tileWidth = this.#tileWidth;
+        const tileHeight = this.#tileHeight;
+
         const element = document.createElement('div');
         element.id = id;
         element.classList.add('puzzle-tile');
 
         const style = element.style;
-        style.top = `${top}px`;
-        style.left = `${left}px`;
-        style.width = `${this.#tileWidth}px`;
-        style.height = `${this.#tileHeight}px`;
+        style.width = `${tileWidth}px`;
+        style.height = `${tileHeight}px`;
         style.backgroundImage = `url(${url})`;
+        style.backgroundSize = `${tileWidth}px ${tileWidth}px`;
 
         element.addEventListener('click', () => {
             const direction = this.#tileMap.move(parseInt(element.id));
@@ -96,7 +101,7 @@ export class Tiles {
     }
 
     get elements() {
-        const fragments = new DocumentFragment();
+        const fragments = new DocumentFragment();        
         const map = this.#tileMap;
 
         for (let obj of map) {

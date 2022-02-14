@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOM Manipulation</title>
+    <style>
+        div.box {
+            margin: 4px auto;
+            width: 80%;
+        }
+    </style>
+</head>
+<body>
+    <div class="box">
+        <h4>Fruits:</h4>
+        <ul id="fruit-list">
+        </ul>
+        <button id="add-fruit">Add Fruit</button>
+    </div>
+</body>
+<script>
+    document.addEventListener('DOMContentLoaded', main);
+
+    function getFruits() {
+        return [
+            'Apple',
+            'Banana',
+            'Orange',
+            'Mango',
+            'Pineapple',
+            'Papaya',
+            'Coconut',
+            'Passion Fruit',
+            'Lychee',
+            'Guava',
+            'Jackfruit',
+            'Kiwi',
+        ];
+    }
+    
+    let fruits = getFruits();
+
+    function main() {
+        document.getElementById('add-fruit').addEventListener('click', function() {
+            const fruitList = document.getElementById('fruit-list');
+            const newFruit = fruits.shift();
+            if (newFruit) {
+                const newFruitElement = document.createElement('li');
+                newFruitElement.innerHTML = `<span style="color: blue;">${newFruit}</span>`;
+                fruitList.appendChild(newFruitElement);
+            } else {
+                this.textContent = 'No more fruits';
+                this.setAttribute('disabled', 'disabled');
+
+                const clearButton = document.createElement('button');
+                clearButton.textContent = 'Clear';
+                const addFruitButton = this;
+                clearButton.addEventListener('click', function() {
+                    fruitList.innerHTML = '';
+
+                    addFruitButton.removeAttribute('disabled');
+                    addFruitButton.textContent = 'Add Fruit';
+
+                    this.parentNode.removeChild(this);
+                    fruits = getFruits();
+                    console.log(fruits);
+                });
+                this.parentNode.appendChild(clearButton);
+            }
+        });
+    }
+
+</script>
+</html>

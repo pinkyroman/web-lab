@@ -7,6 +7,25 @@ export const Direction = Object.freeze({
     None: Symbol('none')
 });
 
+const directionCheckData = {
+    [Direction.Up]: {
+        key: 'row',
+        value: -1,
+    },
+    [Direction.Right]: {
+        key: 'col',
+        value: 1,
+    },
+    [Direction.Down]: {
+        key: 'row',
+        value: 1,
+    },
+    [Direction.Left]: {
+        key: 'col',
+        value: -1,
+    },
+};
+
 export class TileMap {
     #size;
     #map;
@@ -46,9 +65,9 @@ export class TileMap {
                     return { done: true };
                 }
                 
+                const id = map[row][col];
                 const currentCol = col;
                 const currentRow = row;
-                const id = map[row][col];
 
                 if (++col === size) {
                     col = 0;
@@ -67,23 +86,22 @@ export class TileMap {
         };
     }
 
-    move(id) {
+    tryMove(id) {
         const pos = this.#getPosition(id);
         if (!pos) {
             return undefined;
         }
-        
-        if (this.#tryMoveToUp(pos)) {
-            return Direction.Up;
-        }
-        if (this.#tryMoveToRight(pos)) {
-            return Direction.Right;
-        }
-        if (this.#tryMoveToDown(pos)) {
-            return Direction.Down;
-        }
-        if (this.#tryMoveToLeft(pos)) {
-            return Direction.Left;
+
+        for (const dir of [Direction.Up, Direction.Right, Direction.Down, Direction.Left]) {
+            const targetPos = {...pos};
+            const checkData = directionCheckData[dir];
+            const key = checkData.key;
+            targetPos[key] += checkData.value;
+
+            if ((targetPos[key] >= 0 && targetPos[key] < this.#size) && this.#map[targetPos.row][targetPos.col] === BLANK_TILE) {
+                this.#moveMapObject(pos, targetPos);
+                return dir;
+            }
         }
         return Direction.None;
     }
@@ -99,61 +117,11 @@ export class TileMap {
         });
     }
 
-    #tryMoveToUp(pos) {
-        const map = this.#map;
-        const col = pos.col;
-        const targetRow = pos.row - 1;
-
-        if (targetRow >= 0 && map[targetRow][col] === BLANK_TILE) {
-            this.#exchangeObjectsAt(pos, { row: targetRow, col: col });
-            return true;
-        } 
-        return false;
-    }
-
-    #exchangeObjectsAt(pos1, pos2) {
+    #moveMapObject(from, to) {
         const map = this.#map;        
-        const temp = map[pos1.row][pos1.col];        
-        map[pos1.row][pos1.col] = map[pos2.row][pos2.col];
-        map[pos2.row][pos2.col] = temp;
-    }
-
-    #tryMoveToRight(pos) {
-        const map = this.#map;
-        const size = this.#size;
-        const row = pos.row;
-        const targetCol = pos.col + 1;
-
-        if (targetCol < size && map[row][targetCol] === BLANK_TILE) {
-            this.#exchangeObjectsAt(pos, { row: row, col: targetCol });
-            return true;
-        }
-        return false;
-    }
-
-    #tryMoveToDown(pos) {
-        const map = this.#map;
-        const size = this.#size;
-        const col = pos.col;
-        const targetRow = pos.row + 1;
-
-        if (targetRow < size && map[targetRow][col] === BLANK_TILE) {
-            this.#exchangeObjectsAt(pos, { row: targetRow, col: col });
-            return true;
-        }
-        return false;
-    }
-
-    #tryMoveToLeft(pos) {
-        const map = this.#map;
-        const row = pos.row;
-        const targetCol = pos.col - 1;
-
-        if (targetCol >= 0 && map[row][targetCol] === BLANK_TILE) {
-            this.#exchangeObjectsAt(pos, { row: row, col: targetCol });
-            return true;
-        }
-        return false;
+        const temp = map[from.row][from.col];        
+        map[from.row][from.col] = map[to.row][to.col];
+        map[to.row][to.col] = temp;
     }
 
     get resolved() {
@@ -178,7 +146,7 @@ export class TileMap {
 
     shuffle(count = 100) {
         for (let i = 0; i < count; i++) {
-            this.#exchangeObjectsAt(
+            this.#moveMapObject(
                 this.#getRandomPosition(), 
                 this.#getRandomPosition()
             );

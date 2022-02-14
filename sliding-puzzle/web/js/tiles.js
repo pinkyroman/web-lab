@@ -61,12 +61,15 @@ export class Tiles {
         style.backgroundSize = `${tileWidth}px ${tileHeight}px`;
 
         element.addEventListener('click', () => {
-            const direction = this.#tileMap.move(parseInt(element.id));
-            this.#moveTileElement(element,direction);
-            if (this.#tileMap.resolved) {
-                setTimeout(() => {
-                    alert('Congratulation! You Win!');
-                }, 500);
+            const movableDirection = this.#tileMap.tryMove(parseInt(element.id));
+            if (movableDirection !== Direction.None) {
+                this.#moveTileElement(element, movableDirection);
+
+                if (this.#tileMap.resolved) {
+                    setTimeout(() => {
+                        alert('Congratulation! You Win!');
+                    }, 500);
+                }
             }
         });
 

@@ -22,13 +22,13 @@ export class TileMap {
     #initialize() {
         this.#map = {};
         const map = this.#map;
-        const size = this.#size;
-        let v = 0;
-
+        const size = this.#size;        
+        let objId = 0;
+        
         for (let row = 0; row < size; row++) {
             map[row] = [];
             for (let col = 0; col < size; col++) {
-                map[row].push(v++);
+                map[row].push(objId++);
             }
         }
         map[size - 1][size - 1] = BLANK_TILE;
@@ -72,7 +72,7 @@ export class TileMap {
         if (!pos) {
             return undefined;
         }
-
+        
         if (this.#tryMoveToUp(pos)) {
             return Direction.Up;
         }
@@ -112,8 +112,8 @@ export class TileMap {
     }
 
     #exchangeObjectsAt(pos1, pos2) {
-        const map = this.#map;
-        const temp = map[pos1.row][pos1.col];
+        const map = this.#map;        
+        const temp = map[pos1.row][pos1.col];        
         map[pos1.row][pos1.col] = map[pos2.row][pos2.col];
         map[pos2.row][pos2.col] = temp;
     }
@@ -166,7 +166,7 @@ export class TileMap {
             if (item.id !== id) {
                 if (item.row === blankRow 
                     && item.col === blankCol 
-                    && map[blankRow][blankCol] === BLANK_TILE) {
+                    && item.id === BLANK_TILE) {
                     return true;
                 }
                 return false;

@@ -26,7 +26,6 @@ export class SlidingPuzzleGame {
     #initialize(options) {
         const imageUrl = options?.imageUrl ?? './images/puzzle.jpg';
         const size = options?.size ?? 2;
-
         const board = this.#getElement(options?.board ?? 'board');
         const boardWidth = board.clientWidth;
         const boardHeight = board.clientHeight;
@@ -35,8 +34,6 @@ export class SlidingPuzzleGame {
             this.#setupButtons(options);            
             board.appendChild(this.#tiles.elements);
             this.#board = board;
-
-            console.log('initialized successfully: ', this);
         });
     }
 
@@ -54,16 +51,16 @@ export class SlidingPuzzleGame {
 
         this.#shuffleButton.addEventListener('click', () => {
             this.#tiles.shuffle();
-            this.#refreshElements();
+            this.#updateBoard();
         });
 
         this.#resetButton.addEventListener('click', () => {
             this.#tiles.reset();
-            this.#refreshElements();
+            this.#updateBoard();
         });
     }
 
-    #refreshElements() {
+    #updateBoard() {
         const board = this.#board;
         board.innerHTML = '';
         board.appendChild(this.#tiles.elements);

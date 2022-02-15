@@ -89,7 +89,7 @@ export class TileMap {
     tryMove(id) {
         const pos = this.#getPosition(id);
         if (!pos) {
-            return undefined;
+            throw new Error(`an element with id: ${id} not found.`);
         }
 
         for (const dir of [Direction.Up, Direction.Right, Direction.Down, Direction.Left]) {

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mouse Events</title>
+    <style>
+        * {
+            margin: 0px;
+            padding: 0px;
+        }
+        .box {
+            box-sizing: border-box;
+            width: 100px;
+            height: 100px;
+            border: 4px solid black;
+            background-color: yellow;
+            cursor: pointer;
+        }
+        #test {            
+            overflow: hidden;
+            background-color: aquamarine;
+            padding: 16px;
+            width: 400px;
+            height: 100px;
+        }
+        #test div {
+            float: left;
+            margin: 16px;
+            padding: 8px;
+            border: 3px dotted blue;
+            background-color: rgb(118, 173, 255);
+        }
+    </style>
+</head>
+<body>
+    <div class="box"></div>
+    <div id="test">        
+        <div>item 1</div>
+        <div>item 2</div>
+        <div>item 3</div>
+    </div>
+</body>
+<script src="mouse-events.js"></script>
+</html>

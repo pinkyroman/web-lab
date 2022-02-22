@@ -1,0 +1,107 @@
+/*----- 초기화  -----*/
+* {
+    margin: 0px;
+    padding: 0px;
+}
+body {
+    font-family: 'Helvetica', sans-serif;
+    /* min-width: 760px; */
+}
+li { 
+    list-style: none;
+}
+a {
+    text-decoration: none;
+}
+
+/*----- 헤더 -----*/
+#main_header {
+    height: 60px;
+    line-height: 60px;
+    padding-left: 10px;
+    border-bottom: 1px solid black;
+    background: #1d4088;
+    color: white;
+}
+
+/*----- 네비게이션  -----*/
+#main_gnb {
+    overflow: hidden;
+    border-bottom: 1px solid black;
+    background-color: #32394a;
+}
+#main_gnb > ul.left {
+    overflow: hidden;
+    float: left;
+}
+#main_gnb > ul.right {
+    overflow: hidden;
+    float: right;
+}
+#main_gnb > ul.left > li {
+    float: left;
+}
+#main_gnb > ul.right > li {
+    float: left;
+}
+#main_gnb a {
+    /* 레이아웃 설정 */
+    display: block;
+    padding: 10px 20px;
+
+    /* 색상 설정 */
+    border-left: 1px solid #5f6673;
+    border-right: 1px solid #2a2a37;
+    color: white;
+    font-weight: bold;
+}
+
+/*----- 컨텐츠  -----*/
+#wrap {
+    overflow: hidden;
+}
+#wrap > #main_lnb {
+    float: left;
+    box-sizing: border-box;
+    width: 200px;
+}
+#wrap > #content_wrap {
+    box-sizing: border-box;
+    float: left;
+    width: calc(100% - 200px);
+    /* width: 100%; 
+    margin-right: -200px; */
+}
+#wrap > #content_wrap > #content {
+    /* padding-right: 200px; */
+}
+#content {
+    background-color: white;
+    border-left: 1px solid black;
+}
+article {
+    padding: 10px;
+}
+
+/*----- 수직 목록  -----*/
+#wrap {
+    background-color: #71b1d1;
+}
+#main_lnb > ul > li > a {
+    display: block;
+    height: 40px;
+    line-height: 40px;
+    padding-left: 15px;
+
+    border-top: 1px solid #96d6f6;
+    border-bottom: 1px solid #6298b2;
+    color: white;
+    font-weight: bold;
+}
+
+/*----- 푸터  -----*/
+#main_footer {
+    padding: 10px;
+    border-top: 3px solid black;
+    text-align: center;
+}

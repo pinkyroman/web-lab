@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Horizontal Navigation Bar</title>
+    <style>
+        /* 초기화 */
+        * {
+            margin: 0px;
+            padding: 0px;
+        }
+        a {
+            text-decoration: none;
+        }
+        
+        .frame {
+            margin: 8px auto;
+            padding: 8px;
+            width: 50%;
+            border: 4px solid cornflowerblue;
+            background-color: rgb(85, 85, 85);
+        }
+
+        .h-nav-bar {
+            overflow: hidden;
+        }
+        .h-nav-bar-item {
+            float: left;
+        }
+        .h-nav-bar-item:first-child > a {
+            border-radius: 10px 0px 0px 10px;
+        }
+        .h-nav-bar-item:last-child > a {
+            border-radius: 0px 10px 10px 0px;
+        }
+        .h-nav-bar-item > a {
+            display: block;
+            padding: 4px 8px;
+            color: white;
+            background-color: black;
+            text-align: center;
+
+            transition-duration: 0.4s;
+        }
+        .h-nav-bar-item > a:hover {
+            color: red;
+        }
+        li.h-nav-bar-item {
+            list-style: none;
+        }
+
+        /* display: table|table-cell 을 사용하는 경우, 항목 갯수가 고정적일 때 좋다 */
+        /* 물론, width 를 지정하지 않으면, 일반적인 방식으로 사용할 수도 있다. */
+        .t-nav-bar {
+            display: table;
+            /* width: 100%; */
+        }
+        div.t-nav-bar-item {
+            display: table-cell;
+            /* width: 20%; */
+            text-align: center;
+            position: relative;
+        }
+        .t-nav-bar-item:first-child > a {
+            border-radius: 10px 0px 0px 10px;
+        }
+        .t-nav-bar-item:last-child > a {
+            border-radius: 0px 10px 10px 0px;
+        }
+        .t-nav-bar-item > a {
+            display: block;
+            padding: 4px 8px;
+            color: white;
+            background-color: black;
+
+            transition-duration: 0.4s;
+        }
+        .t-nav-bar-item > a:hover {
+            color: red;
+        }
+        
+        .t-nav-bar-item:not(:first-child)::after  {
+            display: block;
+            position: absolute;
+            top: 20%;
+            left: 0px;
+            width: 1px;
+            height: 60%;
+            border-left: 2px solid rgb(91, 64, 126);
+            content: '';
+        }
+
+    </style>
+</head>
+<body>
+    <!-- <ul>, <li>로 구현한 수평 네비게이션 바 -->
+    <div class="frame">
+        <ul class="h-nav-bar">
+            <li class="h-nav-bar-item"><a href="#">Item 1</a></li>
+            <li class="h-nav-bar-item"><a href="#">Item 2</a></li>
+            <li class="h-nav-bar-item"><a href="#">Item 3</a></li>
+            <li class="h-nav-bar-item"><a href="#">Item 4</a></li>
+            <li class="h-nav-bar-item"><a href="#">Item 5</a></li>
+        </ul>
+    </div>
+    <!-- div 만으로 구현한 수평 네비게이션 바 -->
+    <div class="frame">
+        <div class="h-nav-bar">
+            <div class="h-nav-bar-item"><a href="#">Item 1</a></div>
+            <div class="h-nav-bar-item"><a href="#">Item 2</a></div>
+            <div class="h-nav-bar-item"><a href="#">Item 3</a></div>
+            <div class="h-nav-bar-item"><a href="#">Item 4</a></div>
+            <div class="h-nav-bar-item"><a href="#">Item 5</a></div>
+        </div>
+    </div>
+    <!-- display: table 로 구현한 수평 네비게이션 바 -->
+    <div class="frame">
+        <div class="t-nav-bar">
+            <div class="t-nav-bar-item"><a href="#">Item 1</a></div>
+            <div class="t-nav-bar-item"><a href="#">Item 2</a></div>
+            <div class="t-nav-bar-item"><a href="#">Item 3</a></div>
+            <div class="t-nav-bar-item"><a href="#">Item 4</a></div>
+            <div class="t-nav-bar-item"><a href="#">Item 5</a></div>
+        </div>
+    </div>
+</body>
+</html>

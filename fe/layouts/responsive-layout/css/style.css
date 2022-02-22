@@ -1,0 +1,53 @@
+@import url('reset.css');
+
+html, body {
+    height: 100%;
+}
+
+#app {
+    position: relative;
+    height: 100%;
+    width: 100%;
+}
+
+#app-title, #app-content, #app-footer {
+    box-sizing: border-box;
+    position: absolute;
+}
+
+#app-title {
+    top: 0px;
+    width: 100%;
+    height: 50px;
+    background-color: rgb(129, 196, 255);
+}
+#app-content {
+    top: 50px;
+    width: 100%;
+    height: calc(100% - 100px);
+    background-color: azure;
+}
+#app-footer {
+    bottom: 0px;
+    width: 100%;
+    height: 50px;
+    background-color: rgb(163, 255, 232);
+}
+@media screen and (orientation: landscape) {
+    #app-title {
+        width: 30%;
+        height: 80%;
+    }
+    #app-content {
+        top: 0px;
+        left: 30%;
+        right: 0px;
+        width: 70%;
+        height: 100%;
+    }
+    #app-footer {
+        width: 30%;
+        height: 20%;
+        bottom: 0px;
+    }
+}

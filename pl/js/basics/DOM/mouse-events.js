@@ -33,19 +33,20 @@ let test = document.getElementById("test");
 
 // This handler will be executed only once when the cursor
 // moves over the unordered list
-test.addEventListener("mouseenter", function( event ) {
-  // highlight the mouseenter target
-  event.target.style.backgroundColor = "red";
+// test.addEventListener("mouseenter", function( event ) {
+//   // highlight the mouseenter target
+//   event.target.style.backgroundColor = "red";
 
-  // reset the color after a short delay
-  setTimeout(function() {
-    event.target.style.backgroundColor = "";
-  }, 500);
-}, false);
+//   // reset the color after a short delay
+//   setTimeout(function() {
+//     event.target.style.backgroundColor = "";
+//   }, 500);
+// }, false);
 
 // This handler will be executed every time the cursor
 // is moved over a different list item
 test.addEventListener("mouseover", function( event ) {
+  console.log('!!!!! mouseover: ', this); // this는 이벤트를 바인딩한 DOM 요소, 즉, test를 가리킨다.
   // highlight the mouseover target
   event.target.style.backgroundColor = "orange";
   event.target.style.fontWeight = "bold";
@@ -55,3 +56,13 @@ test.addEventListener("mouseover", function( event ) {
     event.target.style.backgroundColor = "";
   }, 500);
 }, false);
+
+test.addEventListener('click', e => {
+  console.log('!!!!! clicked: ', this); // this는 window 객체 (화살표 함수는 this 바인딩을 갖지 않으므로, 항상 상위 스코프의 this를 가리킨다.)
+  // alert('#test clicked.');
+}, false);
+
+document.querySelector('#test > .stop-propagation').addEventListener('click', e => {
+    e.stopPropagation();
+    console.log('!!!!! clicked: ', this); // this는 window 객체 (화살표 함수는 this 바인딩을 갖지 않으므로, 항상 상위 스코프의 this를 가리킨다.)
+  });

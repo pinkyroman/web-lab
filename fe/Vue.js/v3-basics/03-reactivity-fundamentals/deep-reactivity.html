@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Deep Reactivity in Vue 3</title>
+    <script src="https://unpkg.com/vue@3"></script>
+</head>
+<body>
+    <div id="app">
+        {{ nested.message }}
+        <div>
+            <button type="button" @click="nested.message = 'Message changed successfully'">Change Message</button>
+        </div>
+    </div>
+</body>
+<script>
+    Vue.createApp({
+        data() {
+            return {
+                nested: {
+                    message: 'Hello Vue!',
+                },
+            };
+        },
+    }).mount('#app');
+</script>
+</html>

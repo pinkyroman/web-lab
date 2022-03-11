@@ -1,59 +1,123 @@
 <template>
-  <div ref="messageBox" class="message-box hidden">
-      <div ref="container" class="message-box-container">
-
-      </div>
-  </div>
+    <!-- 참고 소스: https://vuejs.org/examples/#modal -->
+    <Teleport to="body">
+        <Transition name="message-box">
+            <div ref="messageBoxBackdrop" class="message-box-backdrop" v-if="showMessageBox">
+                <div class="message-box-wrapper">
+                    <div ref="messageBox" class="message-box">
+                        <div class="message-box-title">
+                            <slot name="title">
+                                Untitled
+                            </slot>
+                        </div>
+                        <div class="message-box-message">
+                            <slot name="message">
+                                No message
+                            </slot>
+                        </div>
+                        <div class="message-box-footer">
+                            <div class="message-box-buttons">
+                                <slot name="buttons">
+                                    <button type="button" @click="this.hide()">OK</button>
+                                </slot>
+                            </div>
+                        </div>
+                    </div>        
+                </div>
+            </div>
+        </Transition>
+    </Teleport>
 </template>
 
 <style scoped>
-.message-box {
+.message-box-backdrop {
     box-sizing: border-box;
-    position: absolute;
-    overflow: hidden;
-
+    position: fixed;
+    z-index: 9998;
+    
     top: 0px;
     left: 0px;
     width: 100%;
     height: 100%;
     
-    background-color: rgba(44, 44, 44, 0.8);
+    background-color: rgba(0, 0, 0, 0.5);
+    display: table;
+    transition: optcity 0.3s ease;
 }
 
-.message-box-container {
-    position: absolute;
-    box-sizing: border-box;
+.message-box-wrapper {
+  display: table-cell;
+  vertical-align: middle;
+}
 
-    top: -400px;
-    left: calc(50% - 200px);
-    /* transform: translate(-50%, -50%); */
-    /* transform: translate(-50%, -200%); */
+.message-box {    
+    box-sizing: border-box;
+    margin: 0px auto;
     width: 400px;
-    height: 200px;
     
     background-color: white;
     border-radius: 4px;
-    box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.5);
+    box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.33);
 
-    transition-delay: 0.4s;
+    transition: all 0.3s ease;
 }
 
-.hidden {
-    display: none;
+.message-box-title {
+    padding: 8px 0px;
+    text-align: center;
+
+    border-bottom: 1px dashed blue;
 }
 
-.shown {
-    display: block;
+.message-box-message {
+    padding: 8px;
+    border-bottom: 1px dashed blue;
+}
+
+.message-box-footer {
+    padding: 8px;
+    text-align: center;    
+}
+
+.message-box-buttons {
+    display: inline-block;
+}
+
+
+/* Transition */
+.message-box-enter-from {
+    opacity: 0;
+}
+
+.message-box-leave-to {
+    opacity: 0;
+}
+
+.message-box-enter-from .message-box,
+.message-box-leave-to .message-box {
+    -webkit-transform: scale(1.1);
+    transform: scale(1.1);
 }
 </style>
 
 <script setup>
-import { onMounted, onUnmounted, getCurrentInstance } from 'vue';
+import { ref, onUnmounted } from 'vue';
 
-const self = getCurrentInstance();
+const emit = defineEmits(['opened', 'closed']);
+const showMessageBox = ref(false);
 
-onMounted(() => {
+
+///////////////////////////////////////////////////////////////////////////////
+// Lifecycle Hooks
+
+onUnmounted(() => {
+    removeKeyDownEventHandler();
 });
+
+function removeKeyDownEventHandler() {
+    // 이벤트 핸들러 등록 해제
+    window.removeEventListener('keydown', onKeyDown, true);
+}
 
 function onKeyDown(e) {
     if (e.key === 'Escape') {
@@ -61,41 +125,28 @@ function onKeyDown(e) {
     }
 }
 
-function removeKeyDownEventHandler() {
-    // 이벤트 핸들러 등록 해제
-    window.removeEventListener('keydown', onKeyDown, true);
-}
-
-onUnmounted(() => {
-    removeKeyDownEventHandler();
-});
-
 ///////////////////////////////////////////////////////////////////////////////
-// exported methods
+// define exposed methods
 
 defineExpose({
     show,
+    hide,
 });
 
-function show() {
-    const classes = self.refs.messageBox.classList;
-    classes.remove('hidden');
-    classes.add('shown');
+///////////////////////////////////////////////////////////////////////////////
+// methods
 
+function show() {
+    showMessageBox.value = true;
     window.addEventListener('keydown', onKeyDown, true);
 
-    const style = self.refs.container.style;
-    // style.transform = 'translate(-50%, -50%)';
-    style.top = '100px';
+    emit('opened');
 }
 
 function hide() {
-    const classes = self.refs.messageBox.classList;
-    classes.add('hidden');
-    classes.remove('shown');
-
     removeKeyDownEventHandler();    
+
+    showMessageBox.value = false;    
+    emit('closed');
 }
-
-
 </script>

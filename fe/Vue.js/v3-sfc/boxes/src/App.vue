@@ -1,11 +1,20 @@
 <template>
   <div id="container">
     <div class="button-box">
-      <button type="button" @click="onShowMessageBoxButtonClicked">Show Message Box</button>
-      <button type="button" @click="onShowModalBoxButtonClicked">Show Modal Box</button>
+      <button type="button" @click="$refs.messageBox.show()">Show Message Box</button>
+      <button type="button" @click="">Get Users</button>
     </div>
   </div>
-  <MessageBox ref="messageBox"></MessageBox>
+
+  <MessageBox ref="messageBox">
+    <template #title>Lorem Ipsum</template>
+    <template #message>
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla porttitor est non sem semper porttitor. Suspendisse mollis a lorem vel molestie. Curabitur eu scelerisque mauris. Curabitur mi velit, auctor quis dignissim ut, ultricies quis odio. Fusce at mi ut ligula euismod fermentum.
+    </template>
+    <template #buttons>
+      <!-- <button type="button" @click="$refs.messageBox.hide()">Close</button> -->
+    </template>
+  </MessageBox>
 </template>
 
 <style>
@@ -24,26 +33,15 @@ div#container .button-box {
 }
 
 button {
-  margin: 0px 8px;
+  margin: 4px 8px;
   padding: 8px;
+
+  width: 180px;
 }
-
-
 </style>
 
 <script setup>
-import { getCurrentInstance } from 'vue';
 import MessageBox from './components/MessageBox.vue';
-
-const self = getCurrentInstance();
-
-function onShowMessageBoxButtonClicked() {
-  self.refs.messageBox.show();
-}
-
-function onShowModalBoxButtonClicked() {
-  console.warn('onShowModalBoxButton not implemented yet.');
-}
 
 </script>
 

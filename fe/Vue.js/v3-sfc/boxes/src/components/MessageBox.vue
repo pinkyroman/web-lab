@@ -106,7 +106,6 @@ import { ref, onUnmounted } from 'vue';
 const emit = defineEmits(['opened', 'closed']);
 const showMessageBox = ref(false);
 
-
 ///////////////////////////////////////////////////////////////////////////////
 // Lifecycle Hooks
 

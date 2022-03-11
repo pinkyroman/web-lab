@@ -1,0 +1,11 @@
+{
+    "users": {
+        "apiRoot": {
+            "scheme": "http",
+            "host": "localhost",
+            "port": "5050"
+        },
+        "apiName": "users",
+        "apiVersion": ""
+    }
+}

@@ -4,6 +4,9 @@
       <button type="button" @click="$refs.messageBox.show()">Show Message Box</button>
       <button type="button" @click="">Get Users</button>
     </div>
+    <div class="users">
+      <Users />
+    </div>
   </div>
 
   <MessageBox ref="messageBox">
@@ -32,6 +35,13 @@ div#container .button-box {
   display: inline-block;
 }
 
+div#container .users {
+  margin: 8px auto;
+  padding: 8px;
+  border: 1px solid blue;
+  border-radius: 4px;
+}
+
 button {
   margin: 4px 8px;
   padding: 8px;
@@ -42,6 +52,7 @@ button {
 
 <script setup>
 import MessageBox from './components/MessageBox.vue';
+import Users from './components/Users.vue';
 
 </script>
 

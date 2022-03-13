@@ -28,4 +28,14 @@ export function useUsersService() {
         users,
         error
     }
+    /* 이런 방법도 문제 없으려나? 문제 없을 듯? 
+        return {
+            getUsers,
+            getUser,
+            patchUser,
+            putUser,
+            deleteUser,
+            ...
+        }
+    */
 }

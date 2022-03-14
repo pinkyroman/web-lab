@@ -1,0 +1,13 @@
+.app-header {
+    margin: 4px;
+    border: 1px dotted red;
+}
+
+.app-header .app-header-title {
+    padding: 8px;
+    font-size: 1.5em;
+    font-weight: bold;
+    color: #333;
+    text-align: center;
+}
+  

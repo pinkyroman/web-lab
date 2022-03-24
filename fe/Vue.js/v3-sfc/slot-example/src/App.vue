@@ -8,8 +8,8 @@
       THIS IS MY OWN CONTENT.
     </div>
 
-    <template #footer="{ versionInfo }">
-      This is just built for testing purpose (version: {{ versionInfo.version }}, release: {{ versionInfo.releaseDate }}).
+    <template #footer="fromChild">
+      This is just built for testing purpose (version: {{ fromChild.versionInfo.version }}, release: {{ fromChild.versionInfo.releaseDate }}).
     </template>
   </AppCard>
 </template>

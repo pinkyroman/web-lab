@@ -1,0 +1,11 @@
+@import './reset.css';
+@import './app-header.css';
+@import './app-nav.css';
+@import './app-contents.css';
+
+.container {
+    margin: 0px auto;
+    width: 80%;
+    height: 100%;
+    border: 1px dotted blue;
+}

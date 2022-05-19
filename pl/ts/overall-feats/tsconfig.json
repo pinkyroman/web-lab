@@ -1,0 +1,10 @@
+{
+  // TSConfig Base 파일
+  "extends": "@tsconfig/node16-strictest-esm/tsconfig.json",
+  "include": [
+    "src/**/*.ts"
+  ],
+  "compilerOptions": {
+    "outDir": "dist",
+  }
+}

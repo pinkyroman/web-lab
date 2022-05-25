@@ -4,8 +4,8 @@
     "outDir": "./dist",
     "rootDir": "./src",
     "declaration": true,
-    "noUnusedParameters": true
-    // "strictNullChecks": true,
+    "noUnusedParameters": true,
+    "strictNullChecks": true
     // "noImplicitReturns": true
   }
 }

@@ -72,20 +72,104 @@ function writePrice(product, price) {
 //   }
 //   writePrice(name, price);
 // });
-let hat = [
-    'Hat',
-    100,
-    10,
-    1.2,
-    3,
-    0.95,
-];
-let gloves = ['Gloves', 75, 10];
-[hat, gloves].forEach((tuple) => {
-    let [name, price, taxRate, ...coupons] = tuple;
-    if (taxRate != undefined) {
-        price += price * (taxRate / 100);
+// let hat: [string, number, number?, ...number[]] = [
+//   'Hat',
+//   100,
+//   10,
+//   1.2,
+//   3,
+//   0.95,
+// ];
+// let gloves: [string, number, number?, ...number[]] = ['Gloves', 75, 10];
+// [hat, gloves].forEach((tuple) =>
+//   let [name, price, taxRate, ...coupons] = tuple;
+//   if (taxRate != undefined) {
+//     price += price * (taxRate / 100);
+//   }
+//   coupons.forEach((c) => (price -= c));
+//   writePrice(name, price);
+// });
+// enum Product {
+//   Hat,
+//   Gloves,
+//   Umbrella,
+// }
+// [Product.Hat, Product.Gloves, Product.Umbrella].forEach((val) => {
+//   console.log(`Name: ${Product[val]}, Value: ${val}`);
+// });
+// let products: [Product, number][] = [
+//   [Product.Hat, 100],
+//   [Product.Gloves, 75],
+//   [Product.Umbrella, 42],
+// ];
+// products.forEach((prod: [Product, number]) => {
+//   switch (prod[0]) {
+//     case Product.Hat:
+//       writePrice('Hat', calculateTax(prod[1]));
+//       break;
+//     case Product.Gloves:
+//       writePrice('Gloves', calculateTax(prod[1]));
+//       break;
+//     case Product.Umbrella:
+//       writePrice('Umbrella', calculateTax(prod[1]));
+//       break;
+//   }
+// });
+// enum City {
+//   London = 'London',
+//   Paris = 'Paris',
+//   NY = 'New York',
+// }
+// console.log(`City: ${City.London}`);
+var OtherEnum;
+(function (OtherEnum) {
+    OtherEnum[OtherEnum["First"] = 10] = "First";
+    OtherEnum[OtherEnum["Two"] = 20] = "Two";
+})(OtherEnum || (OtherEnum = {}));
+let productValue = 11 /* Hat */;
+if (typeof productValue === 'number') {
+    console.log(`Value is a number`);
+}
+let unionValue = 11 /* Hat */;
+if (typeof unionValue === 'number') {
+    console.log(`Value is a number`);
+}
+// function getRandomValue(): 1 | 2 | 3 | 4 {
+//   return (Math.floor(Math.random() * 4) + 1) as 1 | 2 | 3 | 4;
+// }
+var City;
+(function (City) {
+    City["London"] = "LON";
+    City["Paris"] = "PAR";
+    City["Chicago"] = "CHI";
+})(City || (City = {}));
+function getMixedValue(input) {
+    switch (input) {
+        case 1:
+            return 1;
+        case 2:
+            return 'Hello';
+        case 3:
+            return true;
+        case 4:
+        default:
+            return City.London;
     }
-    coupons.forEach((c) => (price -= c));
-    writePrice(name, price);
-});
+}
+let first = getMixedValue(1);
+let second = getMixedValue(2);
+let third = getMixedValue(3);
+console.log(`${first} ${second} ${third}`);
+// function getCityString(
+//   city: 'London' | 'Paris' | 'Chicago'
+// ): `City: ${'London' | 'Paris' | 'Chicago'}` {
+//   return `City: ${city}` as `City: ${'London' | 'Paris' | 'Chicago'}`;
+// }
+let str = getCityString('London');
+console.log(str);
+function getRandomValue() {
+    return (Math.floor(Math.random() * 4) + 1);
+}
+function getCityString(city) {
+    return `City: ${city}`;
+}

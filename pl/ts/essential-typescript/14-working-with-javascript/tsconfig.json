@@ -1,0 +1,17 @@
+{
+  "compilerOptions": {
+    "target": "ES2018",
+    "module": "CommonJS",
+    "rootDir": "./src",
+    "outDir": "./dist",
+    "allowJs": true,
+    "checkJs": true
+    // "strict": true,
+    // "noImplicitAny": false,
+    // "sourceMap": true,
+    // "declaration": true,
+    // "strictNullChecks": true,
+    // "noImplicitReturns": true,
+    // "forceConsistentCasingInFileNames": true
+  }
+}

@@ -11,6 +11,11 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "@types/debug": "^4.1.7",
     "tsc-watch": "^5.0.3"
+  },
+  "dependencies": {
+    "chalk": "^4.1.2",
+    "debug": "^4.3.4"
   }
 }

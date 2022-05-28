@@ -1,17 +1,24 @@
 {
   "compilerOptions": {
-    "target": "ES2018",
+    "target": "ES2022",
     "module": "CommonJS",
     "rootDir": "./src",
     "outDir": "./dist",
-    "allowJs": true,
-    "checkJs": true
-    // "strict": true,
-    // "noImplicitAny": false,
-    // "sourceMap": true,
-    // "declaration": true,
-    // "strictNullChecks": true,
-    // "noImplicitReturns": true,
-    // "forceConsistentCasingInFileNames": true
+    // "allowJs": true,
+    // "checkJs": true,
+    "esModuleInterop": true,
+    // "allowSyntheticDefaultImports": true,
+    // "baseUrl": ".",
+    // "paths": {
+    //   "*": ["types/*"]
+    // },
+    "traceResolution": true,
+    "sourceMap": true,
+    "declaration": true,
+    "forceConsistentCasingInFileNames": true,
+    "strict": true,
+    "noImplicitAny": false,
+    "strictNullChecks": true,
+    "noImplicitReturns": true
   }
 }

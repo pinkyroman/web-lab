@@ -4,13 +4,22 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "node dist/index.js",
+    "dev": "npx webpack serve",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "typescript": "^4.7.2"
+    "css-loader": "^5.2.7",
+    "style-loader": "^2.0.0",
+    "ts-loader": "^8.4.0",
+    "typescript": "^4.7.2",
+    "webpack": "^5.72.1",
+    "webpack-cli": "^4.9.2",
+    "webpack-dev-server": "^3.11.3"
+  },
+  "dependencies": {
+    "bootstrap": "^4.6.1"
   }
 }

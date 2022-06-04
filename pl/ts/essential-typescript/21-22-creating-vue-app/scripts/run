@@ -1,0 +1,3 @@
+#!/bin/zsh
+echo "Running Application Container ..."
+docker run --name vue-app -d -p 4003:4003 vue-app

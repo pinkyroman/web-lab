@@ -1,0 +1,3 @@
+#!/bin/zsh
+echo "Removing Application Container ..."
+docker rm -f vue-app

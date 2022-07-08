@@ -1,0 +1,14 @@
+{
+  "name": "decorators",
+  "version": "0.1.0",
+  "main": "src/main.ts",
+  "license": "MIT",
+  "packageManager": "yarn@3.2.1",
+  "devDependencies": {
+    "tsc-watch": "^5.0.3",
+    "typescript": "^4.7.4"
+  },
+  "scripts": {
+    "start": "tsc-watch --onsuccess \"node dist/main.js\""
+  }
+}

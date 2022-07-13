@@ -1,0 +1,11 @@
+{
+  "name": "basic-formattings",
+  "version": "0.1.0",
+  "description": "Basic visual formattings in CSS",
+  "main": "index.js",
+  "license": "MIT",
+  "packageManager": "yarn@3.2.1",
+  "dependencies": {
+    "normalize.css": "^8.0.1"
+  }
+}

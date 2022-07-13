@@ -1,0 +1,59 @@
+@import "./normalize.css";
+
+div.box1 {
+    display: inline-block;
+    border: 1px dotted red;
+}
+
+div.box2 {
+    display: inline-block;
+    border: 1px dotted blue;
+}
+
+div.box3 {
+    display: inline-block;
+    border: 1px dotted green;
+}
+
+nav a {
+    display: block;
+}
+
+#rollcall li {
+    display: inline;
+    border-right: 1px solid; padding: 0 0.33em;
+}
+
+#rollcall li:first-child {
+    border-left: 1px solid;
+}
+
+div.container-2 {
+    margin: 16px;
+    padding: 2px;
+    height: 200px;
+    background-color: antiquewhite;
+    text-align: center;
+}
+
+div.box4 {
+    margin: 15px auto;
+    width: 100px;
+    height: 100px;
+    border: 1px dashed blue;
+}
+
+div.container-3 {
+    width: 500px;
+    height: 200px;
+    background-color: silver;    
+    border: 3px solid red;
+}
+
+div.box5 {
+    margin-left: 10px;
+    width: 540px;
+    margin-right: auto;
+    background-color: white;
+    border: 1px solid black;
+}

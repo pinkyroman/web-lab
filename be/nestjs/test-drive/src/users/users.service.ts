@@ -3,6 +3,7 @@ import { ulid } from 'ulid';
 import { DataSource, Repository } from 'typeorm';
 import {
   Injectable,
+  Logger,
   // InternalServerErrorException,
   NotFoundException,
   UnprocessableEntityException,
@@ -19,6 +20,8 @@ import { UserInfo } from './userInfo';
 
 @Injectable()
 export class UsersService {
+  private readonly logger = new Logger(UsersService.name);
+
   constructor(
     private authService: AuthService,
     private emailService: EmailService,
@@ -29,7 +32,7 @@ export class UsersService {
 
   async createUser(name: string, email: string, password: string) {
     const userExist = await this.checkUserExists(email);
-    console.log(`중복 이메일 체크: ${userExist}`);
+    this.logger.debug(`중복 이메일 체크: ${userExist}`);
     if (userExist) {
       throw new UnprocessableEntityException(
         '해당 이메일로는 가입할 수 없습니다.',
@@ -49,7 +52,6 @@ export class UsersService {
 
   private async checkUserExists(email: string) {
     const user = await this.usersRepository.findOne({ where: { email } });
-    console.log(user);
     return user != null;
   }
 

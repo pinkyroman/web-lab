@@ -14,6 +14,17 @@ export class AuthGuard implements CanActivate {
     context: ExecutionContext,
   ): boolean | Promise<boolean> | Observable<boolean> {
     const request = context.switchToHttp().getRequest();
+
+    // 테스트를 위한 하드 코드
+    request.user = {
+      id: 'test-id',
+      name: '홍길동',
+      // name: 123,
+      email: 'ghildong.hong@world.email.com',
+      password: 'xptmxjer!123',
+      signupVerifyToken: 'test-signup-verify-token',
+    };
+
     return this.validateRequest(request);
   }
 
@@ -21,7 +32,6 @@ export class AuthGuard implements CanActivate {
     const jwtString = request.headers['authorization'].split('Bearer ')[1];
 
     this.authService.verify(jwtString);
-
     return true;
   }
 }

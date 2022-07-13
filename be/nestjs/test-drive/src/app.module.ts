@@ -8,6 +8,15 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { LoggerMiddleware } from './middleware/logger.middleware';
 import { AuthModule } from './auth/auth.module';
 import authConfig from './config/authConfig';
+import { LoggerModule } from './loggers/logger.module';
+import { ExceptionModule } from './exceptions/exception.module';
+import { BatchModule } from './batch/schedule.module';
+
+// import * as winston from 'winston';
+// import {
+//   utilities as nestWinstonModuleUtilities,
+//   WinstonModule,
+// } from 'nest-winston';
 
 console.log(
   `${__dirname}/config/env/.${process.env.NODE_ENV}.env file is used.`,
@@ -31,8 +40,25 @@ console.log(
       entities: [__dirname + '/**/*.entity{.ts,.js}'],
       synchronize: Boolean(process.env.DATABASE_SYNCHRONIZE),
     }),
+    // WinstonModule.forRoot({
+    //   transports: [
+    //     new winston.transports.Console({
+    //       level: process.env.BUILD === 'production' ? 'info' : 'silly',
+    //       format: winston.format.combine(
+    //         winston.format.timestamp(),
+    //         winston.format.ms(),
+    //         nestWinstonModuleUtilities.format.nestLike('MyApp', {
+    //           prettyPrint: true,
+    //         }),
+    //       ),
+    //     }),
+    //   ],
+    // }),
+    ExceptionModule,
     UsersModule,
     AuthModule,
+    LoggerModule,
+    BatchModule,
   ],
   providers: [],
   controllers: [],

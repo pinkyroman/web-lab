@@ -2,7 +2,7 @@ import { GetUserInfoQuery } from './queries/get-user-info.query';
 import { CreateUserCommand } from './commands/create-user.command';
 import { ErrorsInterceptor } from './../exceptions/errors.interceptor';
 import { MyLogger } from './../loggers/myLogger.service';
-import { UserEntity } from './entities/user.entity';
+// import { UserEntity } from './entities/user.entity';
 import {
   Controller,
   Get,
@@ -13,10 +13,10 @@ import {
   UseGuards,
   ValidationPipe,
   Logger,
-  Inject,
+  // Inject,
   UseInterceptors,
-  InternalServerErrorException,
-  BadRequestException,
+  // InternalServerErrorException,
+  // BadRequestException,
 } from '@nestjs/common';
 import { UsersService } from './users.service';
 import { CreateUserDto } from './dto/create-user.dto';
